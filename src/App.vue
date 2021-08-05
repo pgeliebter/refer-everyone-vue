@@ -10,6 +10,8 @@
       <router-link to="/logout">logout</router-link>
       |
       <router-link to="/signup">signup</router-link>
+      |
+      <router-link to="/campaigns">campaigns</router-link>
     </div>
     <router-view />
   </div>
