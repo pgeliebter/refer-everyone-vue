@@ -1,6 +1,7 @@
 <template>
   <div class="campaigns-index">
     <div v-for="campaign in campaigns" :key="campaign.id">
+      <div v-text="`ID: ${campaign.id}`"></div>
       <div v-text="`Campaign: ${campaign.name}`"></div>
       <div v-text="`Company: ${campaign.company}`"></div>
       <div v-text="`Conversions: ${campaign.total_conversions}`"></div>

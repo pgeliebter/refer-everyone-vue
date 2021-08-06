@@ -6,6 +6,7 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import CampaignsIndex from "../views/CampaignsIndex.vue";
 import CampaignsNew from "../views/CampaignsNew.vue";
+import CampaignsShow from "../views/CampaignsShow.vue";
 
 Vue.use(VueRouter);
 
@@ -47,6 +48,11 @@ const routes = [
     path: "/campaigns/new",
     name: "campaigns-new",
     component: CampaignsNew,
+  },
+  {
+    path: "/campaigns/:id",
+    name: "campaigns-show",
+    component: CampaignsShow,
   },
 ];
 
