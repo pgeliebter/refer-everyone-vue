@@ -23,14 +23,16 @@ export default {
   data: function () {
     return {
       campaign: {},
-      campaignId: null,
+      campaignId: parseInt(this.$route.params.id),
     };
   },
+
   created: function () {
     axios.get(`/campaigns/${this.$route.params.id}`).then((response) => {
       this.campaign = response.data;
       console.log("Campaign:", this.campaign);
     });
   },
+  methods: {},
 };
 </script>
