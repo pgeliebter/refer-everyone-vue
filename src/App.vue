@@ -12,6 +12,8 @@
       <router-link to="/signup">signup</router-link>
       |
       <router-link to="/campaigns">campaigns</router-link>
+      |
+      <router-link to="/campaigns/new">new campaigns</router-link>
     </div>
     <router-view />
   </div>
