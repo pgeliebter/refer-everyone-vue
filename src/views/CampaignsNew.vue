@@ -26,7 +26,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      newCampaignParams: { user_id: parseInt(localStorage.getItem("user_id")) },
+      newCampaignParams: {},
       errors: [],
       errorStatus: "",
     };
