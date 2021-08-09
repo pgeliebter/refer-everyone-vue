@@ -17,12 +17,18 @@
       <p>Total Conversions: {{ campaign.total_conversions }}</p>
 
       <p>Conversions:</p>
-      <ul>
-        <li v-for="conversion in campaign.conversions" :key="conversion.id">
-          {{ conversion.first_name }}
-          {{ conversion.last_name }}, {{ conversion.email }}
-          <p>{{ conversion.referred_by.first_name }}</p>
-        </li>
+      <ul
+        style="width: 50%"
+        v-for="(conversion, index) in orderBy(campaign.conversions, 'first_name')"
+        :key="conversion.id"
+      >
+        <li>ID: {{ conversion.id }}</li>
+        <li>Number: {{ index + 1 }}</li>
+        <li>First Name: {{ conversion.first_name }}</li>
+        <li>Last Name: {{ conversion.last_name }}</li>
+        <li>Email: {{ conversion.email }}</li>
+        <li v-if="conversion.referred_by">Referred by: {{ conversion.referred_by.first_name }}</li>
+        <hr />
       </ul>
     </div>
 
@@ -31,20 +37,28 @@
 </template>
 <script>
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
+
 export default {
   data: function () {
     return {
-      campaign: { hello: "sadfa" },
+      campaign: {},
       campaignId: parseInt(this.$route.params.id),
     };
   },
-
+  mixins: [Vue2Filters.mixin],
   created: function () {
-    axios.get(`/campaigns/${this.$route.params.id}`).then((response) => {
-      this.campaign = response.data;
-      console.log("Campaign:", this.campaign);
-    });
+    axios
+      .get(`/campaigns/${this.$route.params.id}`)
+      .then((response) => {
+        this.campaign = response.data;
+        console.log(this.campaign);
+      })
+      .catch((errors) => {
+        console.log(errors.response);
+      });
   },
+
   methods: {},
 };
 </script>

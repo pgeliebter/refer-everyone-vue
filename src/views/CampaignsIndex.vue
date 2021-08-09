@@ -5,7 +5,9 @@
       <div v-text="`Campaign: ${campaign.name}`"></div>
       <div v-text="`Company: ${campaign.company}`"></div>
       <div v-text="`Conversions: ${campaign.total_conversions}`"></div>
-
+      <router-link :to="`${campaign.id}/new`">Link: localhost:8080/{{ campaign.id }}/new</router-link>
+      <br />
+      <router-link :to="`campaigns/${campaign.id}`"><button>View more detail</button></router-link>
       <hr />
       <div></div>
     </div>
