@@ -8,12 +8,15 @@
       <router-link
         :to="{
           name: 'conversions-new',
-          params: { campaign_id: conversion.campaign.id },
+          params: { campaignId: conversion.campaign.id },
           query: { referredBy: conversion.id },
         }"
       >
         localhost:8080/{{ conversion.campaign.id }}/new?referredBy={{ conversion.id }}
       </router-link>
+      <br />
+      <h6>Total Referrals so far:</h6>
+      <p>{{ conversion.total_referrals }}</p>
     </div>
   </div>
 </template>
@@ -26,13 +29,11 @@ export default {
       conversionId: parseInt(this.$route.params.id),
     };
   },
-
   created: function () {
     axios.get(`/conversions/${this.$route.params.id}`).then((response) => {
       this.conversion = response.data;
       console.log(this.conversion);
     });
   },
-  methods: {},
 };
 </script>
