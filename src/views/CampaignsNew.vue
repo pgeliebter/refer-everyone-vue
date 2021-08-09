@@ -38,6 +38,7 @@ export default {
         .post("/campaigns", this.newCampaignParams)
         .then((response) => {
           console.log(response.data);
+          this.$router.push(`/campaigns/${response.data.newCampaign.id}`);
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
