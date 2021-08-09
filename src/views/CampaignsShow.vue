@@ -5,7 +5,12 @@
       <p>Company: {{ campaign.company }}</p>
       <p>
         Conversion Link:
-        <router-link :to="{ name: 'conversions-new', params: { campaignId: campaign.id } }">
+        <router-link
+          :to="{
+            name: 'conversions-new',
+            params: { campaignId: campaign.id },
+          }"
+        >
           localhost:8080/{{ campaign.id }}/new
         </router-link>
       </p>
