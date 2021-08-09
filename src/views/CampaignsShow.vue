@@ -10,6 +10,7 @@
         <li v-for="conversion in campaign.conversions" :key="conversion.id">
           {{ conversion.first_name }}
           {{ conversion.last_name }}, {{ conversion.email }}
+          <p>{{ conversion.referred_by.first_name }}</p>
         </li>
       </ul>
     </div>
@@ -22,7 +23,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      campaign: {},
+      campaign: { hello: "sadfa" },
       campaignId: parseInt(this.$route.params.id),
     };
   },

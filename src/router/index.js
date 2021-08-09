@@ -7,6 +7,9 @@ import Logout from "../views/Logout.vue";
 import CampaignsIndex from "../views/CampaignsIndex.vue";
 import CampaignsNew from "../views/CampaignsNew.vue";
 import CampaignsShow from "../views/CampaignsShow.vue";
+import ConversionsShow from "../views/ConversionsShow.vue";
+import ConversionsNew from "../views/ConversionsNew.vue";
+import ConversionComplete from "../views/ConversionComplete.vue";
 
 Vue.use(VueRouter);
 
@@ -53,6 +56,21 @@ const routes = [
     path: "/campaigns/:id",
     name: "campaigns-show",
     component: CampaignsShow,
+  },
+  {
+    path: "/conversions/:id",
+    name: "conversions-show",
+    component: ConversionsShow,
+  },
+  {
+    path: "/:campaign_id/new/",
+    name: "conversions-new",
+    component: ConversionsNew,
+  },
+  {
+    path: "/success/:id/",
+    name: "conversion-complete",
+    component: ConversionComplete,
   },
 ];
 
