@@ -3,6 +3,12 @@
     <div>
       <h2>Name: {{ campaign.name }}</h2>
       <p>Company: {{ campaign.company }}</p>
+      <p>
+        Conversion Link:
+        <router-link :to="{ name: 'conversions-new', params: { campaignId: campaign.id } }">
+          localhost:8080/{{ campaign.id }}/new
+        </router-link>
+      </p>
       <p>Total Conversions: {{ campaign.total_conversions }}</p>
 
       <p>Conversions:</p>
@@ -14,7 +20,7 @@
         </li>
       </ul>
     </div>
-    <router-link :to="`/campaigns/${campaign.id}/edit`"><button>Fuggehdaboutit</button></router-link>
+
     <router-link to="/campaigns">Back to all campaigns</router-link>
   </div>
 </template>
