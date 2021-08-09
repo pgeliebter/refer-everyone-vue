@@ -1,5 +1,7 @@
 <template>
   <div class="conversions-new">
+    <h2>{{ conversion.campaign.name }}</h2>
+    <h2>{{ conversion.campaign.company }}</h2>
     <p>{{ newConversionParams }}</p>
     <p>{{ messages.noMatch }}</p>
     <form v-on:submit.prevent="newConversion()">
@@ -33,12 +35,19 @@ export default {
     return {
       newConversionParams: { campaign_id: this.$route.params.campaignId, referred_by: this.$route.query.referredBy },
       messages: { match: true },
+      conversion: {},
     };
   },
   watch: {
     newConversionParams: function () {
       console.log(this.newConversionParams);
     },
+  },
+  created: function () {
+    axios.get(`/conversions/${this.$route.params.campaignId}`).then((response) => {
+      this.conversion = response.data;
+      console.log(this.conversion);
+    });
   },
   mounted: function () {
     this.validateCampaign();
@@ -53,6 +62,7 @@ export default {
         }
       });
     },
+
     newConversion: function () {
       axios.post(`/conversions`, this.newConversionParams).then((response) => {
         console.log(response);
