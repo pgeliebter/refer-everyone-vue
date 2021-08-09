@@ -1,6 +1,20 @@
 <template>
   <div class="conversion-complete">
-    {{ conversion }}
+    <h2>{{ conversion.campaign.name }}</h2>
+    <h2>{{ conversion.campaign.company }}</h2>
+    <div>
+      <h6>Refer your friends!</h6>
+      <h6>Copy and paste this link and send to your friends:</h6>
+      <router-link
+        :to="{
+          name: 'conversions-new',
+          params: { campaign_id: conversion.campaign.id },
+          query: { referredBy: conversion.id },
+        }"
+      >
+        localhost:8080/{{ conversion.campaign.id }}/new?referredBy={{ conversion.id }}
+      </router-link>
+    </div>
   </div>
 </template>
 <script>
@@ -16,7 +30,7 @@ export default {
   created: function () {
     axios.get(`/conversions/${this.$route.params.id}`).then((response) => {
       this.conversion = response.data;
-      console.log("Conversion:", this.conversions);
+      console.log(this.conversion);
     });
   },
   methods: {},

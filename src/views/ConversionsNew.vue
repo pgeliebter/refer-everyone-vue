@@ -31,7 +31,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      newConversionParams: { campaign_id: this.$route.params.campaign_id, referred_by: this.$route.query.referred_by },
+      newConversionParams: { campaign_id: this.$route.params.campaignId, referred_by: this.$route.query.referredBy },
       messages: { match: true },
     };
   },
@@ -46,7 +46,7 @@ export default {
   methods: {
     // the below method validates the campaign from the route and make sure it exists
     validateCampaign: function () {
-      axios.get(`/campaigns/${this.$route.params.campaign_id}`).catch((errors) => {
+      axios.get(`/campaigns/${this.$route.params.campaignId}`).catch((errors) => {
         console.log(errors.response.status);
         if (errors.response.status != 200) {
           this.messages.match = true;

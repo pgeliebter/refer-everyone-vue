@@ -63,7 +63,7 @@ const routes = [
     component: ConversionsShow,
   },
   {
-    path: "/:campaign_id/new/",
+    path: "/:campaignId/new/",
     name: "conversions-new",
     component: ConversionsNew,
   },
