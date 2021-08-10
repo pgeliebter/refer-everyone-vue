@@ -16,7 +16,7 @@
       </p>
       <p>Total Conversions: {{ campaign.total_conversions }}</p>
 
-      <p>Conversions:</p>
+      <p v-for="conversion in campaign.conversions" :key="conversion.id">Conversions:</p>
       <ul
         style="width: 50%"
         v-for="(conversion, index) in orderBy(campaign.conversions, 'first_name')"
@@ -58,7 +58,5 @@ export default {
         console.log(errors.response);
       });
   },
-
-  methods: {},
 };
 </script>
