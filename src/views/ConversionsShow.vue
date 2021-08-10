@@ -16,7 +16,7 @@ export default {
   created: function () {
     axios.get(`/conversions/${this.$route.params.id}`).then((response) => {
       this.conversion = response.data;
-      console.log("Conversion:", this.conversions);
+      console.log(this.conversions);
     });
   },
   methods: {},
