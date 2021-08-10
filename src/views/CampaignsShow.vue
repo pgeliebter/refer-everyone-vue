@@ -1,3 +1,4 @@
+/* this page's path is "/campaigns/:id" */
 <template>
   <div class="campaigns-show">
     <div>

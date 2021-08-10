@@ -1,3 +1,5 @@
+/* this page's route is path: "/conversions/:id" */
+
 <template>
   <div class="conversions-show">
     {{ conversion }}

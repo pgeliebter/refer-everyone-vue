@@ -1,3 +1,4 @@
+/* this page's path is "/:campaignId/new/" */
 <template>
   <div class="conversions-new">
     <h2>{{ conversion.campaign.name }}</h2>

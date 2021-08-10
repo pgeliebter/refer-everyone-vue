@@ -1,3 +1,4 @@
+/* this page's path is "/logout" */
 <template>
   <div class="logout"></div>
 </template>

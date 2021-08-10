@@ -1,3 +1,5 @@
+/* this page's path is "/login" */
+
 <template>
   <div class="login">
     <form v-on:submit.prevent="submit()">

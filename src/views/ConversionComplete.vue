@@ -1,3 +1,4 @@
+/* this page's path is "/success/:id/" */
 <template>
   <div class="conversion-complete">
     <h2>{{ conversion.campaign.name }}</h2>

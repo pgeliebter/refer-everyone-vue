@@ -1,3 +1,4 @@
+/* this page's path is "/campaigns" */
 <template>
   <div class="campaigns-index">
     <div v-for="campaign in campaigns" :key="campaign.id">
