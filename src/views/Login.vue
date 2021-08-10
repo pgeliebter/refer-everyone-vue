@@ -39,7 +39,7 @@ export default {
           localStorage.setItem("email", response.data.email);
           localStorage.setItem("user_id", response.data.user_id);
 
-          this.$router.push("/");
+          this.$router.push("/campaigns");
         })
         .catch((error) => {
           console.log(error.response);
