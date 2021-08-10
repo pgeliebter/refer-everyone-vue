@@ -16,21 +16,29 @@
         </router-link>
       </p>
       <p>Total Conversions: {{ campaign.total_conversions }}</p>
-
-      <p v-for="conversion in campaign.conversions" :key="conversion.id">Conversions:</p>
-      <ul
-        style="width: 50%"
-        v-for="(conversion, index) in orderBy(campaign.conversions, 'first_name')"
-        :key="conversion.id"
-      >
-        <li>ID: {{ conversion.id }}</li>
-        <li>Number: {{ index + 1 }}</li>
-        <li>First Name: {{ conversion.first_name }}</li>
-        <li>Last Name: {{ conversion.last_name }}</li>
-        <li>Email: {{ conversion.email }}</li>
-        <li v-if="conversion.referred_by">Referred by: {{ conversion.referred_by.first_name }}</li>
-        <hr />
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Referred By</th>
+            <th>Conversion ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(conversion, index) in orderBy(campaign.conversions, 'id')" v-bind:key="conversion.id">
+            <td>{{ index }}</td>
+            <td>{{ conversion.first_name }}</td>
+            <td>{{ conversion.last_name }}</td>
+            <td>{{ conversion.email }}</td>
+            <td v-if="conversion.referred_by">{{ conversion.referred_by.first_name }}</td>
+            <td v-else>Blank</td>
+            <td>{{ conversion.id }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <router-link to="/campaigns">Back to all campaigns</router-link>
@@ -48,7 +56,7 @@ export default {
     };
   },
   mixins: [Vue2Filters.mixin],
-  created: function () {
+  mounted: function () {
     axios
       .get(`/campaigns/${this.$route.params.id}`)
       .then((response) => {
@@ -61,3 +69,20 @@ export default {
   },
 };
 </script>
+<style>
+table {
+  overflow-y: scroll;
+  height: 350px;
+  display: block;
+  border: 1px solid;
+  margin-top: 50px;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+th {
+  background: white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+}
+</style>

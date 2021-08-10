@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <div v-if="localStorage.jwt">Logged in: {{ localStorage.email }}</div>
+    <div v-else>Logged out</div>
     <div id="nav">
       <router-link to="/">Home</router-link>
       |
@@ -18,6 +20,15 @@
     <router-view />
   </div>
 </template>
+<script>
+export default {
+  data: function () {
+    return {
+      localStorage: localStorage,
+    };
+  },
+};
+</script>
 
 <style>
 #app {
