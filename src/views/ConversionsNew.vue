@@ -28,7 +28,7 @@
         </div>
       </form>
     </div>
-    <div v-else>hllo</div>
+    <div v-else>Campaign does not exist!</div>
   </div>
 </template>
 <script>
