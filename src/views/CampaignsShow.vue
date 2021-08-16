@@ -19,11 +19,13 @@
       <table>
         <thead>
           <tr>
-            <th>Number</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Number |</th>
+
+            <th>First Name |</th>
+            <th>Last Name |</th>
             <th>Email</th>
-            <th>Referred By</th>
+            <th>| Referred By |</th>
+            <th>Total Incentive earned |</th>
             <th>Conversion ID</th>
           </tr>
         </thead>
@@ -35,6 +37,7 @@
             <td>{{ conversion.email }}</td>
             <td v-if="conversion.referred_by">{{ conversion.referred_by.first_name }}</td>
             <td v-else>Blank</td>
+            <td>{{ conversion.total_incentive }}</td>
             <td>{{ conversion.id }}</td>
           </tr>
         </tbody>
