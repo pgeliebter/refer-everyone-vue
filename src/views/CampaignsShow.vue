@@ -16,6 +16,7 @@
         </router-link>
       </p>
       <p>Total Conversions: {{ campaign.total_conversions }}</p>
+      <p>Incentive: {{ campaign.incentive }}</p>
       <table>
         <thead>
           <tr>

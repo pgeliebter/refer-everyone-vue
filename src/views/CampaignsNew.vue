@@ -11,10 +11,14 @@
         Company:
         <input type="text" v-model="newCampaignParams.company" />
       </div>
-
+      <div>
+        Referral Earnings:
+        <input type="text" v-model="newCampaignParams.incentive" />
+      </div>
       <div>
         <input type="submit" value="Create Campaign" />
       </div>
+
       <hr style="width: 25%" />
       <div>
         <input type="reset" />
