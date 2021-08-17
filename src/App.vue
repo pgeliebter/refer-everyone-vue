@@ -5,7 +5,7 @@
         <div class="container position-relative">
           <div class="d-flex align-items-center navbar-no-collapse-items order-lg-last">
             <button
-              class="navbar-toggler order-last"
+              class="navbar-toggler order-first"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbar-demo-2"
