@@ -1,5 +1,4 @@
 /* this page's path is "/campaigns/new" */
-
 <template>
   <div class="movies-new">
     <form v-on:submit.prevent="newCampaign()">

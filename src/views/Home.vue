@@ -1,8 +1,6 @@
 /* this page's path is "/" */
 <template>
-  <div class="home">
-    <h1>{{ message }}</h1>
-  </div>
+  <div class="home"></div>
 </template>
 
 <style></style>
