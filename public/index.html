@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="assets/img/favicon.ico" type="image/ico" />
+    <!--Icons-->
+    <link href="assets/fonts/iconsmind/iconsmind.css" rel="stylesheet" />
+    <link href="assets/fonts/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Main CSS -->
+    <link href="assets/css/theme-pink.min.css" rel="stylesheet" />
+
+    <title>Assan 4</title>
   </head>
-  <body>
-    <noscript>
-      <strong>
-        We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please
-        enable it to continue.
-      </strong>
-    </noscript>
+
+  <body class="overflow-hidden-x">
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <!-- scripts -->
+    <script src="assets/js/theme.bundle.js"></script>
   </body>
 </html>
