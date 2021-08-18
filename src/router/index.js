@@ -10,6 +10,7 @@ import CampaignsShow from "../views/CampaignsShow.vue";
 import ConversionsShow from "../views/ConversionsShow.vue";
 import ConversionsNew from "../views/ConversionsNew.vue";
 import ConversionComplete from "../views/ConversionComplete.vue";
+import Test from "../views/Test.vue";
 
 Vue.use(VueRouter);
 
@@ -71,6 +72,11 @@ const routes = [
     path: "/success/:id/",
     name: "conversion-complete",
     component: ConversionComplete,
+  },
+  {
+    path: "/test",
+    name: "something",
+    component: Test,
   },
 ];
 

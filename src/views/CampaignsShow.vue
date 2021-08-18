@@ -73,20 +73,4 @@ export default {
   },
 };
 </script>
-<style>
-table {
-  overflow-y: scroll;
-  height: 350px;
-  display: block;
-  border: 1px solid;
-  margin-top: 50px;
-}
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-th {
-  background: white;
-  position: sticky;
-  top: 0; /* Don't forget this, required for the stickiness */
-}
-</style>
+<style></style>
