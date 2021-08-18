@@ -1,4 +1,4 @@
-/* this page's path is "/login" */
+/* this page's path is "/login" */ /* Might deprecate this page as login is going to be in App.vue s */
 
 <template>
   <div class="login">
