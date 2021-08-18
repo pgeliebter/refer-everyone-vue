@@ -64,6 +64,7 @@ export default {
     axios
       .get(`/campaigns/${this.$route.params.id}`)
       .then((response) => {
+        console.log(response.data);
         this.campaign = response.data;
         console.log(this.campaign);
       })
