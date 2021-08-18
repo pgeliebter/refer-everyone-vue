@@ -21,7 +21,7 @@
             <div v-if="isLoggedIn()" class="nav-item me-3 me-lg-0 dropdown">
               <a
                 href="/"
-                class="btn btn-secondary rounded-pill py-0 ps-2 pe-2"
+                class="btn btn-outline-primary rounded-pill py-0 ps-2 pe-2"
                 data-bs-auto-close="outside"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
