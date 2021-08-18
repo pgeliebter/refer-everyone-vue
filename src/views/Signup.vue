@@ -13,8 +13,8 @@
               <p class="mb-4 text-muted">To get started, Please signup with details...</p>
               <div class="position-relative">
                 <div>
-                  <form class="row g-3">
-                    <!--input-with-icon-->
+                  <form v-on:submit.prevent="submit()" class="row g-3">
+                    <!--first name input-with-icon-->
                     <div class="input-icon-group mb-3 col-md-6">
                       <span class="input-icon">
                         <svg
@@ -31,12 +31,12 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="signUpFirstName"
+                        v-model="newUserParams.first_name"
                         autofocus=""
                         placeholder="First name"
                       />
                     </div>
-                    <!--input-with-icon-->
+                    <!--last name input-with-icon-->
                     <div class="input-icon-group mb-3 col-md-6">
                       <span class="input-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi" viewBox="0 0 16 16">
@@ -48,12 +48,12 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="signUpLastName"
+                        v-model="newUserParams.last_name"
                         autofocus=""
                         placeholder="Last name"
                       />
                     </div>
-                    <!--input-with-icon-->
+                    <!--email input-with-icon-->
                     <div class="input-icon-group mb-3">
                       <span class="input-icon">
                         <svg
@@ -68,8 +68,14 @@
                         </svg>
                       </span>
 
-                      <input type="text" class="form-control" id="signUpMail" placeholder="Your email address" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="newUserParams.email"
+                        placeholder="Your email address"
+                      />
                     </div>
+                    <!--phone input-with-icon-->
                     <div class="input-icon-group mb-3">
                       <span class="input-icon">
                         <svg
@@ -84,29 +90,14 @@
                         </svg>
                       </span>
 
-                      <input type="email" class="form-control" id="signUpPhone" placeholder="Mobile number" />
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="newUserParams.phone"
+                        placeholder="Mobile number"
+                      />
                     </div>
-                    <!--input-with-icon-->
-                    <div class="input-icon-group mb-3">
-                      <span class="input-icon">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="16"
-                          height="16"
-                          fill="currentColor"
-                          class="bi bi-key"
-                          viewBox="0 0 16 16"
-                        >
-                          <path
-                            d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"
-                          ></path>
-                          <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
-                        </svg>
-                      </span>
-
-                      <input type="password" class="form-control" id="signUpPassword" placeholder="Enter password" />
-                    </div>
-                    <!--input-with-icon-->
+                    <!--password input-with-icon-->
                     <div class="input-icon-group mb-3">
                       <span class="input-icon">
                         <svg
@@ -127,7 +118,32 @@
                       <input
                         type="password"
                         class="form-control"
-                        id="signUpConfirmPassword"
+                        v-model="newUserParams.password"
+                        placeholder="Enter password"
+                      />
+                    </div>
+                    <!--password confirmation input-with-icon-->
+                    <div class="input-icon-group mb-3">
+                      <span class="input-icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-key"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"
+                          ></path>
+                          <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+                        </svg>
+                      </span>
+
+                      <input
+                        type="password"
+                        class="form-control"
+                        v-model="newUserParams.password_confirmation"
                         placeholder="Confirm password"
                       />
                     </div>
