@@ -17,30 +17,31 @@
                 <i></i>
               </span>
             </button>
-            <div class="nav-item me-3 me-lg-0 dropdown">
+            <!-- the below div is for the dropdown on menu i need to add a v-if in case user is not logged in -->
+            <div v-if="isLoggedIn()" class="nav-item me-3 me-lg-0 dropdown">
               <a
-                href="#"
+                href="/"
                 class="btn btn-secondary rounded-pill py-0 ps-2 pe-2"
                 data-bs-auto-close="outside"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Jaquine
+                {{ localStorage.first_name }}
               </a>
               <div class="dropdown-menu shadow-lg dropdown-menu-end dropdown-menu-xs p-0">
                 <a href="#" class="dropdown-header border-bottom p-4">
                   <div class="d-flex align-items-center">
-                    <div>
+                    <!-- <div>
                       <img src="assets/img/avatar/12.jpg" alt="" class="avatar xl rounded-pill me-3" />
-                    </div>
+                    </div> -->
                     <div>
-                      <h5 class="mb-0">Jaquine Harnandez</h5>
-                      <span class="text-muted d-block mb-2">jaquinehar@domain.com</span>
-                      <div class="small d-inline-block link-underline fw-semibold text-muted">View account</div>
+                      <h5 class="mb-0">{{ `${localStorage.first_name} ${localStorage.last_name}` }}</h5>
+                      <span class="text-muted d-block mb-2">{{ localStorage.email }}</span>
+                      <!-- <div class="small d-inline-block link-underline fw-semibold text-muted">View account</div> -->
                     </div>
                   </div>
                 </a>
-                <a href="#" class="dropdown-item p-3">
+                <a href="/logout" class="dropdown-item p-3">
                   <span class="d-block text-end">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -63,6 +64,13 @@
                   </span>
                 </a>
               </div>
+            </div>
+
+            <div v-if="!isLoggedIn()" class="nav-item me-3 me-lg-0">
+              <a href="/login" class="btn btn-secondary rounded-pill py-0 ps-2 pe-2">Login</a>
+            </div>
+            <div v-if="!isLoggedIn()" class="nav-item me-3 me-lg-0">
+              <a href="/signup" class="btn btn-primary rounded-pill py-0 ps-2 pe-2">Signup</a>
             </div>
           </div>
           <div class="collapse navbar-collapse" id="navbar-demo-2">
@@ -116,6 +124,16 @@ export default {
     return {
       localStorage: localStorage,
     };
+  },
+  methods: {
+    isLoggedIn: function () {
+      if (localStorage.getItem("jwt")) return true;
+      else return false;
+    },
+    getUserId: function () {
+      if (localStorage.getItem("user_id")) return localStorage.getItem("user_id");
+      else return "no user_id";
+    },
   },
 };
 </script>

@@ -12,6 +12,8 @@ export default {
     localStorage.removeItem("jwt");
     localStorage.removeItem("email");
     localStorage.removeItem("user_id");
+    localStorage.removeItem("last_name");
+    localStorage.removeItem("first_name");
     this.$router.push("/");
   },
 };

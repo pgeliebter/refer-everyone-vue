@@ -37,7 +37,8 @@ export default {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
           localStorage.setItem("email", response.data.email);
-          localStorage.setItem("user_id", response.data.user_id);
+          localStorage.setItem("first_name", response.data.first_name);
+          localStorage.setItem("last_name", response.data.last_name);
 
           this.$router.push("/campaigns");
         })
