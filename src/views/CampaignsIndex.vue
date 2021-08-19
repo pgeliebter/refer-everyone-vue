@@ -71,20 +71,23 @@
     <section class="position-relative">
       <div class="container py-7 py-lg-12">
         <div class="row justify-content-center">
-          <div class="col-6">
+          <div class="col-10">
             <div class="d-flex mb-4 align-items-center">
               <h4 class="mb-0 me-3">Campaigns</h4>
               <div class="pt-1 border-bottom flex-grow-1"></div>
             </div>
             <ul class="list-group">
-              <li class="list-group-item py-3" v-for="campaign in campaigns" :key="campaign.id">
+              <li class="list-group-item list-group-item-action py-3" v-for="campaign in campaigns" :key="campaign.id">
                 <div class="d-flex align-items-start">
                   <div class="me-3 me-lg-4"></div>
                   <div class="flex-grow-1">
                     <div class="d-sm-flex align-items-center">
                       <div class="mb-3 mb-sm-0 flex-grow-1">
-                        <a class="text-dark fs-6">{{ campaign.name }}</a>
+                        <h6 class="text-dark fs-6">{{ campaign.name }}</h6>
                         <p class="mb-0 small">{{ campaign.company }}</p>
+                      </div>
+                      <div class="mb-3 mb-sm-0 flex-grow-1">
+                        {{ campaign.total_conversions }}
                       </div>
                       <div class="">
                         <div class="d-flex align-items-center">
