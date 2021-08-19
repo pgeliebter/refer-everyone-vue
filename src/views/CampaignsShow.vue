@@ -172,17 +172,113 @@
                     <td>${{ parseFloat(conversion.total_incentive).toFixed(2) }}</td>
                     <td>{{ conversion.id }}</td>
                     <td>
-                      <router-link :to="`campaigns/${campaign.id}`">
+                      <a href="#modalBasic" data-bs-toggle="modal" aria-expanded="false">
                         <button class="btn btn-info btn-hover-arrow btn-sm mb-1">
                           <span>View</span>
                         </button>
-                      </router-link>
+                      </a>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <hr class="my-7" />
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modalBasic" tabindex="-1" aria-labelledby="modalBasicLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content border-0">
+            <div class="modal-header border-0 bg-light">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                <i class="bi bi-x fs-5 lh-1"></i>
+              </button>
+            </div>
+            <div class="modal-body py-1 border-0">
+              <div class="d-flex px-4">
+                <div class="flex-grow-1">
+                  <ol class="list-unstyled my-4">
+                    <li class="d-flex mb-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex mb-2 justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <h6 class="mb-0 me-3">Emily Doe</h6>
+                          </div>
+                        </div>
+                        <p class="mb-0">
+                          It is a long fact that a reader will be distracted by the readable content of a page when
+                          looking at its layout of a page when looking at its layout.
+                        </p>
+                      </div>
+                    </li>
+                    <li class="d-flex mb-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex mb-2 justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <h6 class="mb-0 me-3">Emily Doe</h6>
+                          </div>
+                        </div>
+                        <p class="mb-0">
+                          It is a long fact that a reader will be distracted by the readable content of a page when
+                          looking at its layout of a page when looking at its layout.
+                        </p>
+                      </div>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+              <div class="d-flex p-4 list-group-item">
+                <div class="me-3">
+                  <img src="assets/img/avatar/2.jpg" alt="" class="avatar sm rounded-circle" />
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex mb-0 justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <h6 class="mb-0 me-3">Nikita Miller</h6>
+                      <small class="text-muted">
+                        <i class="bi bi-clock me-1"></i>
+                        04 July
+                      </small>
+                    </div>
+                    <div>
+                      <a href="#!" class="text-decoration-underline text-muted fs-6 mb-0 small">Reply</a>
+                    </div>
+                  </div>
+                  <p class="mb-0">
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout of a page when looking at its layout.
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex p-4 list-group-item">
+                <div class="me-3">
+                  <img src="assets/img/avatar/3.jpg" alt="" class="avatar sm rounded-circle" />
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex mb-0 justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <h6 class="mb-0 me-3">Andrew Toy</h6>
+                      <small class="text-muted">
+                        <i class="bi bi-clock me-1"></i>
+                        29 June
+                      </small>
+                    </div>
+                    <div>
+                      <a href="#!" class="text-decoration-underline text-muted fs-6 mb-0 small">Reply</a>
+                    </div>
+                  </div>
+                  <p class="mb-0">
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout of a page when looking at its layout.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer bg-light border-0">
+            <button type="button" class="btn btn-white btn-sm" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary btn-sm">Save changes</button>
           </div>
         </div>
       </div>
