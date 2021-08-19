@@ -15,14 +15,13 @@
 
         <div class="row">
           <div class="col-md-6 col-xl-3 mb-4 mb-xl-0">
-            <div class="card border-0">
+            <div class="card bg-dark text-white border-0 hover-lift hover-shadow-lg">
               <!-- Card body -->
-              <div class="card-body bg-tint-primary p-4">
+              <div class="card-body p-4">
                 <span class="center-both mb-3 size-40 bg-primary text-white rounded-circle">
                   <i class="icon-Folder fs-5"></i>
                 </span>
                 <h2 class="h1 mb-2">
-                  <small>$</small>
                   <span
                     data-countup='{"startVal":0}'
                     data-aos=""
@@ -30,27 +29,15 @@
                     data-to="3210"
                     class="aos-init aos-animate"
                   >
-                    3,210
+                    {{ campaign.total_conversions }}
                   </span>
                 </h2>
-                <p class="mb-3">Earning</p>
-                <div class="progress bg-light-primary" style="height: 4px">
-                  <div
-                    class="progress-bar aos-init aos-animate"
-                    role="progressbar"
-                    data-aos=""
-                    data-aos-id="progress:in"
-                    aria-valuenow="65"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    style="width: 65%; transition-delay: 0.4s; transition-duration: 0.8s"
-                  ></div>
-                </div>
+                <p class="mb-3">Total Conversions</p>
               </div>
             </div>
           </div>
           <div class="col-md-6 col-xl-3 mb-4 mb-xl-0">
-            <div class="card bg-dark text-white border-0 hover-lift hover-shadow-lg">
+            <div class="card bg-secondary text-white border-0 hover-lift hover-shadow-lg">
               <!-- Card body -->
               <div class="card-body p-4">
                 <span class="center-both mb-3 size-40 bg-warning text-white rounded-circle">
@@ -84,7 +71,7 @@
             </div>
           </div>
           <div class="col-md-6 col-xl-3 mb-4 mb-md-0">
-            <div class="card border-0 bg-tint-info rounded-xl hover-lift">
+            <div class="card border-0 bg-info rounded-l hover-lift">
               <!-- Card body -->
               <div class="card-body p-4">
                 <span class="center-both mb-3 size-40 bg-danger text-white rounded-circle">
@@ -118,7 +105,7 @@
             </div>
           </div>
           <div class="col-md-6 col-xl-3 mb-4 mb-md-0">
-            <div class="card border-0 shadow-lg hover-lift rounded-xl">
+            <div class="card border-0 shadow-lg hover-lift rounded-l">
               <!-- Card body -->
               <div class="card-body p-4">
                 <span class="center-both mb-3 size-40 bg-success text-white rounded-circle">
@@ -155,15 +142,9 @@
       </div>
     </section>
     <section class="position-relative">
-      <div class="container py-7 py-lg-12">
+      <div class="container py-7 py-lg-1">
         <div class="row justify-content-center">
           <div class="col-12">
-            <h4 class="mb-0 me-3 py-2">{{ campaign.name }}</h4>
-            <div class="d-flex mb-4 align-items-center">
-              <h6 class="mb-0 me-3">{{ campaign.company }}</h6>
-              <div class="pt-1 border-bottom flex-grow-1"></div>
-            </div>
-
             <div class="table-responsive">
               <table class="table table-hover">
                 <thead>
