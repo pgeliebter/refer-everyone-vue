@@ -37,18 +37,15 @@
           <div class="col-lg-4 pt-3 pb-4 pb-lg-5 pt-lg-5 me-auto col-md-6 z-index-2">
             <div>
               <div>
-                <h2 class="mb-5 display-4">
-                  We make
-                  <span class="" data-typed='{"strings": ["Modern", "Good", "Responsive", "Incredible"]}'></span>
-
-                  <br />
-                  Designs for Web
-                </h2>
                 <h2 class="mb-1 display-6">{{ campaign.name }}</h2>
                 <h4 class="mb-4 display-5">{{ campaign.company }}</h4>
-                <form>
+                <form class="row g-3">
                   <!--input-with-icon-->
-                  <div class="mb-3">
+                  <div class="mb-3 col-md">
+                    <label class="small form-label" for="signUpName">Your full name</label>
+                    <input type="text" class="form-control" id="signUpName" autofocus />
+                  </div>
+                  <div class="mb-3 col-md">
                     <label class="small form-label" for="signUpName">Your full name</label>
                     <input type="text" class="form-control" id="signUpName" autofocus />
                   </div>

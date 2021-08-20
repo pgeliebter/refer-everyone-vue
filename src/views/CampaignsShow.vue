@@ -141,6 +141,14 @@
         </div>
       </div>
     </section>
+    <router-link
+      :to="{
+        name: 'conversions-new',
+        params: { campaignId: campaign.id },
+      }"
+    >
+      localhost:8080/{{ campaign.id }}/new
+    </router-link>
     <section class="position-relative">
       <div class="container py-7 py-lg-1">
         <div class="row justify-content-center">
