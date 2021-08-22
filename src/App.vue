@@ -17,9 +17,13 @@
                 <i></i>
               </span>
             </button>
-            <!-- the below is for popup modal -->
-            <a href="#modalForm" data-bs-toggle="modal" aria-expanded="false" class="btn btn-outline-secondary">
-              Demo Form
+            <!-- the below is for popup SignUp modal -->
+            <a href="#modalSignUpForm" data-bs-toggle="modal" aria-expanded="false" class="btn btn-outline-secondary">
+              Sign Up
+            </a>
+            <!-- the below is for popup Login modal -->
+            <a href="#modalLoginForm" data-bs-toggle="modal" aria-expanded="false" class="btn btn-outline-secondary">
+              Login
             </a>
             <!-- the below div is for the dropdown on menu -->
             <div v-if="isLoggedIn()" class="nav-item me-3 me-lg-0 dropdown">
@@ -192,7 +196,7 @@
     </header>
     <router-view />
     <!-- signup modal below -->
-    <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+    <div class="modal fade" id="modalSignUpForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content border-0">
           <div class="position-relative border-0 pe-4">
@@ -281,10 +285,10 @@
                       </span>
 
                       <input
-                        type="text"
+                        type="email"
                         class="form-control"
                         v-model="newUserParams.email"
-                        placeholder="Your email address"
+                        placeholder="Email address"
                       />
                     </div>
                     <!--phone input-with-icon-->
@@ -374,6 +378,106 @@
         </div>
       </div>
     </div>
+    <!-- login modal below -->
+    <div class="modal fade" id="modalLoginForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content border-0">
+          <div class="position-relative border-0 pe-4">
+            <button
+              type="button"
+              class="
+                btn-close
+                position-absolute
+                end-0
+                top-0
+                me-3
+                mt-3
+                size-40
+                p-0
+                center-both
+                rounded-circle
+                bg-tint-primary
+                z-index-1
+              "
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              id="closeLogin"
+            >
+              <i class="bi bi-x fs-5"></i>
+            </button>
+          </div>
+          <div class="modal-body py-5 border-0">
+            <div class="px-3">
+              <div class="position-relative">
+                <div>
+                  <form v-on:submit.prevent="submitLogin()">
+                    <div>
+                      <h3 class="mb-1">Welcome back!</h3>
+                      <p class="mb-4 text-muted">Please login...</p>
+                    </div>
+                    <div class="input-icon-group mb-3">
+                      <span class="input-icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          class="bi bi-envelope"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"
+                          ></path>
+                        </svg>
+                      </span>
+                      <input
+                        type="email"
+                        v-model="newSessionParams.email"
+                        class="form-control"
+                        autofocus=""
+                        placeholder="Email address"
+                      />
+                    </div>
+                    <div class="input-icon-group mb-3">
+                      <span class="input-icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          class="bi bi-key"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"
+                          ></path>
+                          <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+                        </svg>
+                      </span>
+                      <input
+                        type="password"
+                        v-model="newSessionParams.password"
+                        class="form-control"
+                        placeholder="Password"
+                      />
+                    </div>
+
+                    <div class="d-grid">
+                      <button class="btn btn-primary btn-hover-arrow" type="submit">
+                        <span>Sign in</span>
+                      </button>
+                    </div>
+                    <p class="pt-4 mb-0 text-muted">
+                      Don’t have an account yet?
+                      <a href="/signup" class="ms-2 pb-0 text-dark fw-semibold link-underline">Sign Up</a>
+                    </p>
+                  </form>
+                  <ul v-if="errors.length > 0">
+                    <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -406,6 +510,7 @@ export default {
           localStorage.setItem("first_name", response.data.first_name);
           localStorage.setItem("last_name", response.data.last_name);
           this.closeModal("closeLogin");
+          this.errors = [];
           this.$router.push("/campaigns");
         })
         .catch((error) => {
