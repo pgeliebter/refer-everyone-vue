@@ -17,6 +17,10 @@
                 <i></i>
               </span>
             </button>
+            <!-- the below is for popup modal -->
+            <a href="#modalForm" data-bs-toggle="modal" aria-expanded="false" class="btn btn-outline-secondary">
+              Demo Form
+            </a>
             <!-- the below div is for the dropdown on menu -->
             <div v-if="isLoggedIn()" class="nav-item me-3 me-lg-0 dropdown">
               <a
@@ -77,7 +81,7 @@
                 Login
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs p-4">
-                <form v-on:submit.prevent="submit()">
+                <form v-on:submit.prevent="submitLogin()">
                   <!-- errors list -->
                   <ul v-if="errors.length > 0">
                     <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
@@ -187,6 +191,189 @@
       </nav>
     </header>
     <router-view />
+    <!-- signup modal below -->
+    <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="modalFormLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content border-0">
+          <div class="position-relative border-0 pe-4">
+            <button
+              type="button"
+              class="
+                btn-close
+                position-absolute
+                end-0
+                top-0
+                me-3
+                mt-3
+                size-40
+                p-0
+                center-both
+                rounded-circle
+                bg-tint-primary
+                z-index-1
+              "
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              id="closeSignUp"
+            >
+              <i class="bi bi-x fs-5"></i>
+            </button>
+          </div>
+          <div class="modal-body py-5 border-0">
+            <div class="px-3">
+              <h2 class="mb-1 display-6">Welcome back!</h2>
+              <h5 class="mb-4 text-muted">Please Sign In with details...</h5>
+              <div class="position-relative">
+                <div>
+                  <form v-on:submit.prevent="submitSignUp()" class="row g-3">
+                    <!--first name input-with-icon-->
+                    <div class="input-icon-group mb-3 col-md-6">
+                      <span class="input-icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          class="bi bi-envelope"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"
+                          ></path>
+                        </svg>
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="newUserParams.first_name"
+                        autofocus=""
+                        placeholder="First name"
+                      />
+                    </div>
+                    <!--last name input-with-icon-->
+                    <div class="input-icon-group mb-3 col-md-6">
+                      <span class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi" viewBox="0 0 16 16">
+                          <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"
+                          ></path>
+                        </svg>
+                      </span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="newUserParams.last_name"
+                        autofocus=""
+                        placeholder="Last name"
+                      />
+                    </div>
+                    <!--email input-with-icon-->
+                    <div class="input-icon-group mb-3">
+                      <span class="input-icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          class="bi bi-envelope"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"
+                          ></path>
+                        </svg>
+                      </span>
+
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="newUserParams.email"
+                        placeholder="Your email address"
+                      />
+                    </div>
+                    <!--phone input-with-icon-->
+                    <div class="input-icon-group mb-3">
+                      <span class="input-icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          class="bi bi-envelope"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"
+                          ></path>
+                        </svg>
+                      </span>
+
+                      <input
+                        type="text"
+                        class="form-control"
+                        v-model="newUserParams.phone"
+                        placeholder="Mobile number"
+                      />
+                    </div>
+                    <!--password input-with-icon-->
+                    <div class="input-icon-group mb-3">
+                      <span class="input-icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-key"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"
+                          ></path>
+                          <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+                        </svg>
+                      </span>
+
+                      <input
+                        type="password"
+                        class="form-control"
+                        v-model="newUserParams.password"
+                        placeholder="Enter password"
+                      />
+                    </div>
+                    <!--password confirmation input-with-icon-->
+                    <div class="input-icon-group mb-3">
+                      <span class="input-icon">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-key"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"
+                          ></path>
+                          <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"></path>
+                        </svg>
+                      </span>
+
+                      <input
+                        type="password"
+                        class="form-control"
+                        v-model="newUserParams.password_confirmation"
+                        placeholder="Confirm password"
+                      />
+                    </div>
+
+                    <div class="d-grid">
+                      <button class="btn btn-dark" type="submit">Sign Up</button>
+                    </div>
+                  </form>
+                  <ul v-if="errors.length > 0">
+                    <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -196,6 +383,7 @@ export default {
     return {
       localStorage: localStorage,
       newSessionParams: {},
+      newUserParams: {},
       errors: [],
     };
   },
@@ -208,7 +396,7 @@ export default {
       if (localStorage.getItem("user_id")) return localStorage.getItem("user_id");
       else return "no user_id";
     },
-    submit: function () {
+    submitLogin: function () {
       axios
         .post("/sessions", this.newSessionParams)
         .then((response) => {
@@ -217,7 +405,7 @@ export default {
           localStorage.setItem("email", response.data.email);
           localStorage.setItem("first_name", response.data.first_name);
           localStorage.setItem("last_name", response.data.last_name);
-
+          this.closeModal("closeLogin");
           this.$router.push("/campaigns");
         })
         .catch((error) => {
@@ -226,6 +414,21 @@ export default {
           this.email = "";
           this.password = "";
         });
+    },
+    submitSignUp: function () {
+      axios
+        .post("/users", this.newUserParams)
+        .then((response) => {
+          console.log(response.data);
+          this.closeModal("closeSignUp");
+          this.errors = [];
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
+    closeModal(id) {
+      document.getElementById(`${id}`).click();
     },
   },
 };
