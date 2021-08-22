@@ -30,7 +30,7 @@
                   <div class="h-100">
                     <div class="card bg-gradient-light h-100 p-3">
                       <div>
-                        <h4 class="mb-2">{{ campiagn.name }}</h4>
+                        <h4 class="mb-2">{{ campaign.name }}</h4>
                         <small class="d-block mb-3">Senior Software developer</small>
                         <ul class="list-unstyled border-bottom pb-3 mb-3">
                           <li class="d-flex align-items-stretch mb-2">
