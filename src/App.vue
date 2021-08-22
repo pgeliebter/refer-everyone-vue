@@ -90,6 +90,13 @@
                 <a href="/about" class="nav-link">About us</a>
               </li>
               <li v-if="isLoggedIn()" class="nav-item dropdown">
+                <a class="nav-link" href="/campaigns">
+                  Campaigns
+                  <!--Dropdown menu arrow svg icon-->
+                </a>
+              </li>
+              <!-- the below is the old campaigns drop down -->
+              <!-- <li v-if="isLoggedIn()" class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
                   href=""
@@ -98,8 +105,8 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Campaigns
-                  <!--Dropdown menu arrow svg icon-->
+                  Campaigns 
+                 
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 9" class="dropdown-arrow">
                     <path
                       fill="currentColor"
@@ -111,13 +118,13 @@
                   <div class="row">
                     <div class="col-lg-5 ps-lg-4 position-relative">
                       <div class="py-1 py-lg-3 d-lg-flex flex-column">
-                        <a href="/campagins" class="dropdown-item">All Campaigns</a>
+                        <a href="/campaigns" class="dropdown-item">All Campaigns</a>
                         <a href="/campaigns/new" class="dropdown-item">New Campaign</a>
                       </div>
                     </div>
                   </div>
                 </div>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
@@ -510,4 +517,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+</style>

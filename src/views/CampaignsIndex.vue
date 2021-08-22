@@ -23,8 +23,13 @@
         </div>
       </div>
     </section>
+
     <section class="position-relative">
       <div class="container py-7 py-lg-12">
+        <nav class="nav mb-5 nav-pills" id="campaign-table">
+          <a href="/campaigns" class="nav-link active">My campaigns</a>
+          <a href="/campaigns/new" class="nav-link">New campaign</a>
+        </nav>
         <div class="row justify-content-center">
           <div class="col-12">
             <div class="d-flex mb-4 align-items-center">
