@@ -151,6 +151,15 @@
     </router-link>
     <section class="position-relative">
       <div class="container py-7 py-lg-1">
+        <div class="d-flex justify-content-end mb-3">
+          <!-- <label>Search:</label> -->
+          <div class="col-4">
+            <label for="search" class="form-label">Search</label>
+            <div>
+              <input id="search" type="email" class="form-control form-control-sm" v-model="conversionsFilter" />
+            </div>
+          </div>
+        </div>
         <div class="row justify-content-center">
           <div class="col-12">
             <div class="table-responsive">
@@ -170,7 +179,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(conversion, index) in orderBy(campaign.conversions, 'id')" v-bind:key="conversion.id">
+                  <!-- not sure how to search one field deeper in the filter -->
+                  <tr
+                    v-for="(conversion, index) in orderBy(
+                      filterBy(
+                        campaign.conversions,
+                        conversionsFilter,
+                        'first_name',
+                        'last_name',
+                        'id',
+                        'email',
+                        'referred_by'
+                      ),
+                      'id'
+                    )"
+                    v-bind:key="conversion.id"
+                  >
                     <th scope="row">{{ index + 1 }}</th>
                     <td>{{ conversion.first_name }}</td>
                     <td>{{ conversion.last_name }}</td>
@@ -322,6 +346,7 @@ export default {
       campaign: {},
       campaignId: parseInt(this.$route.params.id),
       currentConversion: {},
+      conversionsFilter: "",
     };
   },
   mixins: [Vue2Filters.mixin],
@@ -345,4 +370,9 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+/* #magnifyingGlass {
+  height: 1.5rem;
+  width: 1.5rem;
+} */
+</style>
