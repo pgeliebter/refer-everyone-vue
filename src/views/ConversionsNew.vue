@@ -2,7 +2,7 @@
 <template>
   <main class="conversions-new mt-5">
     <!--page-hero-->
-    <section class="bg-white position-relative d-flex justify-content-center align-items-center h-100">
+    <section v-if="match" class="bg-white position-relative d-flex justify-content-center align-items-center h-100">
       <div class="bg-dark d-none d-md-flex position-fixed end-0 top-0 w-md-50 w-lg-55 h-100">
         <!--Divider shape-->
         <svg
@@ -39,49 +39,55 @@
       <div class="container z-index-1">
         <div class="row align-items-center">
           <div class="col-lg-4 pt-3 pb-4 pb-lg-5 pt-lg-5 me-auto col-md-6 z-index-2">
-            <div>
-              <div>
-                <h2 class="mb-1 display-6">{{ campaign.name }}</h2>
-                <h4 class="mb-4 display-5">{{ campaign.company }}</h4>
-                <form v-on:submit.prevent="newConversion()" class="row g-3">
-                  <!--input-with-icon-->
-                  <div class="mb-3 col-md">
-                    <label class="small form-label" for="signUpFirstName">Your first name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="signUpFirstName"
-                      autofocus
-                      v-model="newConversionParams.first_name"
-                    />
-                  </div>
-                  <div class="mb-3 col-md">
-                    <label class="small form-label" for="signUpLastName">Your last name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="signUpLastName"
-                      v-model="newConversionParams.last_name"
-                    />
-                  </div>
-
-                  <!--input-with-icon-->
-                  <div class="mb-3">
-                    <label class="small form-label" for="signUpMail">Your email address</label>
-                    <input type="email" class="form-control" id="signUpMail" v-model="newConversionParams.email" />
-                  </div>
-                  <!--input-with-icon-->
-                  <div class="mb-3">
-                    <label class="small form-label" for="signUpPassword">Your phone number</label>
-                    <input type="text" class="form-control" id="signUpPassword" v-model="newConversionParams.phone" />
-                  </div>
-                  <!--input-with-icon-->
-
-                  <div class="d-grid">
-                    <button class="btn btn-dark" type="submit">Press ME!!!</button>
-                  </div>
-                </form>
+            <h2 class="mb-1 display-6">{{ campaign.name }}</h2>
+            <h4 class="mb-4 display-5">{{ campaign.company }}</h4>
+            <form v-on:submit.prevent="newConversion()" class="row g-3">
+              <!--input-with-icon-->
+              <div class="mb-3 col-md">
+                <label class="small form-label" for="signUpFirstName">Your first name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="signUpFirstName"
+                  autofocus
+                  v-model="newConversionParams.first_name"
+                />
               </div>
+              <div class="mb-3 col-md">
+                <label class="small form-label" for="signUpLastName">Your last name</label>
+                <input type="text" class="form-control" id="signUpLastName" v-model="newConversionParams.last_name" />
+              </div>
+
+              <!--input-with-icon-->
+              <div class="mb-3">
+                <label class="small form-label" for="signUpMail">Your email address</label>
+                <input type="email" class="form-control" id="signUpMail" v-model="newConversionParams.email" />
+              </div>
+              <!--input-with-icon-->
+              <div class="mb-3">
+                <label class="small form-label" for="signUpPassword">Your phone number</label>
+                <input type="text" class="form-control" id="signUpPassword" v-model="newConversionParams.phone" />
+              </div>
+              <!--input-with-icon-->
+
+              <div class="d-grid">
+                <button class="btn btn-dark" type="submit">Press ME!!!</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section v-else class="position-relative overflow-hidden">
+      <div class="container pt-12 pb-7">
+        <div class="row">
+          <div class="col-md-10 col-lg-8 mx-auto text-center position-relative">
+            <div class="position-relative z-index-1">
+              <div class="text-danger mb-2">
+                <img src="assets/img/graphics/illustration/404.svg" class="width-220 mx-auto" alt="" />
+              </div>
+              <h1 class="display-1 mb-4">404</h1>
+              <h2 class="mb-4">Oops! Page not found</h2>
             </div>
           </div>
         </div>
