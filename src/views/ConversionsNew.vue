@@ -30,7 +30,11 @@
         </svg>
 
         <!--Image-->
-        <img src="assets/img/backgrounds/bg3.jpg" alt="" class="bg-image" />
+        <img
+          src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z2l0aHVifGVufDB8fDB8fA%3D%3D"
+          alt=""
+          class="bg-image"
+        />
       </div>
       <div class="container z-index-1">
         <div class="row align-items-center">
@@ -39,68 +43,44 @@
               <div>
                 <h2 class="mb-1 display-6">{{ campaign.name }}</h2>
                 <h4 class="mb-4 display-5">{{ campaign.company }}</h4>
-                <form class="row g-3">
+                <form v-on:submit.prevent="newConversion()" class="row g-3">
                   <!--input-with-icon-->
                   <div class="mb-3 col-md">
-                    <label class="small form-label" for="signUpName">Your full name</label>
-                    <input type="text" class="form-control" id="signUpName" autofocus />
+                    <label class="small form-label" for="signUpFirstName">Your first name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="signUpFirstName"
+                      autofocus
+                      v-model="newConversionParams.first_name"
+                    />
                   </div>
                   <div class="mb-3 col-md">
-                    <label class="small form-label" for="signUpName">Your full name</label>
-                    <input type="text" class="form-control" id="signUpName" autofocus />
+                    <label class="small form-label" for="signUpLastName">Your last name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="signUpLastName"
+                      v-model="newConversionParams.last_name"
+                    />
                   </div>
 
                   <!--input-with-icon-->
                   <div class="mb-3">
                     <label class="small form-label" for="signUpMail">Your email address</label>
-                    <input type="email" class="form-control" id="signUpMail" />
+                    <input type="email" class="form-control" id="signUpMail" v-model="newConversionParams.email" />
                   </div>
                   <!--input-with-icon-->
                   <div class="mb-3">
-                    <label class="small form-label" for="signUpPassword">Enter password</label>
-                    <input type="password" class="form-control" id="signUpPassword" />
+                    <label class="small form-label" for="signUpPassword">Your phone number</label>
+                    <input type="text" class="form-control" id="signUpPassword" v-model="newConversionParams.phone" />
                   </div>
                   <!--input-with-icon-->
-                  <div class="mb-3">
-                    <label class="small form-label" for="signUpConfirmPassword">Confirm password</label>
-                    <input type="password" class="form-control" id="signUpConfirmPassword" />
-                  </div>
-                  <!--Checkbox-->
-                  <div class="mb-3 d-flex justify-content-between">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                      <label class="form-check-label small text-muted" for="flexCheckDefault">
-                        i agree to
-                        <a href="#!" class="fw-semibold">Terms & conditions</a>
-                      </label>
-                    </div>
-                  </div>
 
                   <div class="d-grid">
-                    <button class="btn btn-dark" type="submit">Sign Up</button>
+                    <button class="btn btn-dark" type="submit">Press ME!!!</button>
                   </div>
                 </form>
-
-                <!---->
-                <p class="pt-3 small text-muted">
-                  Already have an account?
-                  <a href="page-account-signin-alt.html" class="ms-2 text-dark fw-semibold link-underline">Sign in</a>
-                </p>
-                <!--Divider-->
-                <div class="d-flex align-items-center pb-3">
-                  <span class="flex-grow-1 border-bottom pt-1"></span>
-                  <span class="d-inline-flex center-both lh-1 size-30 rounded-circle bg-white text-mono">or</span>
-                  <span class="flex-grow-1 border-bottom pt-1"></span>
-                </div>
-                <div class="d-grid">
-                  <a href="#!" class="d-flex hover-lift si-hover-facebook btn position-relative center-both">
-                    <!--Main Icon-->
-                    <div class="position-relative d-flex align-items-center">
-                      <img src="assets/img/brands/Facebook.svg" alt="" class="width-20 me-2" />
-                      <span>sign up with facebook</span>
-                    </div>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
@@ -128,6 +108,7 @@ export default {
   mounted: function () {
     this.validateCampaign();
   },
+
   methods: {
     // the below method validates the campaign from the route and make sure it exists
     validateCampaign: function () {
