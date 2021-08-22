@@ -312,6 +312,9 @@
                     <div class="d-grid">
                       <button class="btn btn-primary" type="submit">Sign Up</button>
                     </div>
+                    <ul v-if="errors.length > 0" class="alert alert-danger mt-3 mb-0">
+                      <li v-for="error in errors" v-bind:key="error" class="ms-4 mb-0">{{ error }}</li>
+                    </ul>
                     <p class="pt-4 mb-0 text-muted">
                       Already have an account?
                       <a
@@ -324,9 +327,6 @@
                       </a>
                     </p>
                   </form>
-                  <ul v-if="errors.length > 0">
-                    <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-                  </ul>
                 </div>
               </div>
             </div>
@@ -427,6 +427,9 @@
                         <span>Login</span>
                       </button>
                     </div>
+                    <ul v-if="errors.length > 0" class="alert alert-danger mt-3 mb-0">
+                      <li v-for="error in errors" v-bind:key="error" class="mb-0">{{ error }}</li>
+                    </ul>
                     <p class="pt-4 mb-0 text-muted">
                       Don’t have an account yet?
                       <a
@@ -439,9 +442,6 @@
                       </a>
                     </p>
                   </form>
-                  <ul v-if="errors.length > 0">
-                    <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
-                  </ul>
                 </div>
               </div>
             </div>
