@@ -48,7 +48,7 @@ const routes = [
     component: CampaignsShow,
   },
   {
-    path: "/conversions/show",
+    path: "/lookup",
     name: "conversions-show",
     component: ConversionsShow,
   },

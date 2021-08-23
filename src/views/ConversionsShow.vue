@@ -1,4 +1,4 @@
-/* this page's route is path: "/conversions/show" */
+/* this page's route is path: "/lookup" */
 <template>
   <main>
     <section class="position-relative">
@@ -51,14 +51,23 @@
                 <div class="col-md-6 mb-3 mb-lg-0 col-lg-4">
                   <input
                     type="text"
-                    placeholder="Conversion number"
+                    placeholder="Phone number"
                     class="form-control form-control-lg shadow-none border-0"
-                    v-model="conversionId"
+                    v-model="lookupPhoneParams"
                   />
                 </div>
 
                 <div class="col-md-12 col-lg-4">
-                  <button type="button" class="btn btn-primary btn-lg w-100" @click="conversionLookup()">Lookup</button>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-lg w-100"
+                    @click="conversionLookup()"
+                    href="#modalLookup"
+                    data-bs-toggle="modal"
+                    aria-expanded="false"
+                  >
+                    Lookup
+                  </button>
                 </div>
               </div>
             </form>
@@ -66,6 +75,100 @@
         </div>
       </div>
     </section>
+    <!-- modal for all conversions -->
+    <div
+      class="modal fade"
+      id="modalLookup"
+      tabindex="-1"
+      aria-labelledby="modalBasicLabel"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content border-0">
+          <div class="modal-header border-0 bg-light">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <i class="bi bi-x fs-5 lh-1"></i>
+            </button>
+          </div>
+
+          <ul class="list-group">
+            <li class="list-group-item py-3" v-for="conversion in allConversions" :key="conversion.id">
+              <div class="d-flex align-items-start">
+                <div class="flex-grow-1">
+                  <div class="d-sm-flex align-items-center">
+                    <div class="mb-3 mb-sm-0 flex-grow-1">
+                      <p class="text-dark fs-6">{{ conversion.campaign.name }}</p>
+                      <p class="mb-0 small">{{ conversion.campaign.company }}</p>
+                    </div>
+                    <div class="">
+                      <div class="d-flex align-items-center">
+                        <a
+                          href="#modalSingleConversion"
+                          data-bs-toggle="modal"
+                          data-bs-dismiss="modal"
+                          class="ms-2 pb-0 text-dark fw-semibold link-underline"
+                          @click="currentConversion = conversion"
+                        >
+                          <div class="btn btn-sm btn-outline-light border text-secondary shadow-sm">
+                            <i class="me-1 bi bi-check fs-6 lh-1"></i>
+                            See stats
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- modal for a specific converison -->
+    <div
+      class="modal fade"
+      id="modalSingleConversion"
+      tabindex="-1"
+      aria-labelledby="modalBasicLabel"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content border-0">
+          <div class="modal-header border-0 bg-light">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <i class="bi bi-x fs-5 lh-1"></i>
+            </button>
+          </div>
+          {{ currentConversion }}
+          <!-- <ul class="list-group">
+            <li class="list-group-item py-3" v-for="conversion in allConversions" :key="conversion.id">
+              <div class="d-flex align-items-start">
+                <div class="flex-grow-1">
+                  <div class="d-sm-flex align-items-center">
+                    <div class="mb-3 mb-sm-0 flex-grow-1">
+                      <p class="text-dark fs-6">{{ conversion.campaign.name }}</p>
+                      <p class="mb-0 small">{{ conversion.campaign.company }}</p>
+                    </div>
+                    <div class="">
+                      <div class="d-flex align-items-center">
+                        <div class="btn btn-sm btn-outline-light border text-secondary shadow-sm">
+                          <i class="me-1 bi bi-check fs-6 lh-1"></i>
+                          See stats
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul> -->
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 <script>
@@ -74,17 +177,25 @@ import Vue2Filters from "vue2-filters";
 export default {
   data: function () {
     return {
-      conversion: { campaign: { name: "" } },
+      currentConversion: {},
       conversionId: null,
+      lookupPhoneParams: null,
+      allConversions: [],
+      errors: [],
     };
   },
   mixins: [Vue2Filters.mixin],
   methods: {
     conversionLookup: function () {
-      axios.get(`/conversions/${this.conversionId}`).then((response) => {
-        this.conversion = response.data;
-        console.log(this.conversion);
-      });
+      axios
+        .get(`/conversions/lookup/${this.lookupPhoneParams}`)
+        .then((response) => {
+          this.allConversions = response.data;
+          console.log(this.allConversions);
+        })
+        .catch((error) => {
+          this.errors = error.response.data;
+        });
     },
   },
 };

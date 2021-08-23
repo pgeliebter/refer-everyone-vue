@@ -95,36 +95,6 @@
                   <!--Dropdown menu arrow svg icon-->
                 </a>
               </li>
-              <!-- the below is the old campaigns drop down -->
-              <!-- <li v-if="isLoggedIn()" class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href=""
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Campaigns 
-                 
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 9" class="dropdown-arrow">
-                    <path
-                      fill="currentColor"
-                      d="M12.25 2.30062L10.8988 0.949371L6.5 5.33854L2.10125 0.949371L0.75 2.30062L6.5 8.05062L12.25 2.30062Z"
-                    ></path>
-                  </svg>
-                </a>
-                <div class="dropdown-menu dropdown-menu-start py-0 overflow-hidden">
-                  <div class="row">
-                    <div class="col-lg-5 ps-lg-4 position-relative">
-                      <div class="py-1 py-lg-3 d-lg-flex flex-column">
-                        <a href="/campaigns" class="dropdown-item">All Campaigns</a>
-                        <a href="/campaigns/new" class="dropdown-item">New Campaign</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li> -->
             </ul>
           </div>
         </div>
