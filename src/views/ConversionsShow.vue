@@ -8,6 +8,7 @@
       <div class="container w-lg-85 mx-auto">
         <div
           class="
+            rounded-1
             py-5
             px-4
             py-lg-7
@@ -81,35 +82,34 @@
       id="modalLookup"
       tabindex="-1"
       aria-labelledby="modalBasicLabel"
+      data-bs-backdrop="static"
       style="display: none"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content border-0">
           <div class="modal-header border-0 bg-light">
-            <h5 class="modal-title">Modal title</h5>
+            <h5 class="modal-title">Submissions</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
               <i class="bi bi-x fs-5 lh-1"></i>
             </button>
           </div>
 
-          <ul class="list-group">
+          <ul v-if="allConversions.length >= 1" class="list-group">
             <li class="list-group-item py-3" v-for="conversion in allConversions" :key="conversion.id">
               <div class="d-flex align-items-start">
                 <div class="flex-grow-1">
                   <div class="d-sm-flex align-items-center">
                     <div class="mb-3 mb-sm-0 flex-grow-1">
-                      <p class="text-dark fs-6">{{ conversion.campaign.name }}</p>
-                      <p class="mb-0 small">{{ conversion.campaign.company }}</p>
+                      <h6 class="text-dark fs-3">{{ conversion.campaign.name }}</h6>
+                      <h6>&nbsp;&nbsp;{{ conversion.campaign.company }}</h6>
                     </div>
                     <div class="">
                       <div class="d-flex align-items-center">
                         <a
-                          href="#modalSingleConversion"
-                          data-bs-toggle="modal"
-                          data-bs-dismiss="modal"
+                          v-bind:href="`/success/${conversion.id}`"
+                          aria-label="Close"
                           class="ms-2 pb-0 text-dark fw-semibold link-underline"
-                          @click="currentConversion = conversion"
                         >
                           <div class="btn btn-sm btn-outline-light border text-secondary shadow-sm">
                             <i class="me-1 bi bi-check fs-6 lh-1"></i>
@@ -123,19 +123,40 @@
               </div>
             </li>
           </ul>
+          <div v-else class="container pt-12 pb-7">
+            <div class="row">
+              <div class="col-md-10 col-lg-8 mx-auto text-center position-relative">
+                <div class="position-relative z-index-1">
+                  <div class="text-danger mb-2">
+                    <img src="assets/img/graphics/illustration/404.svg" class="width-220 mx-auto" alt="" />
+                  </div>
+
+                  <h2 class="mb-4">Oops! No submissions found</h2>
+
+                  <span class="block">
+                    <a href="index.html" class="fw-semibold">
+                      <i class="bi bi-arrow-left fs-4 me-1 align-middle"></i>
+                      Back to Home
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- modal for a specific converison -->
-    <div
+    <!-- modal for a specific converison commented out- going to try to just link to success page -->
+    <!-- <div
       class="modal fade"
       id="modalSingleConversion"
       tabindex="-1"
       aria-labelledby="modalBasicLabel"
+      data-bs-backdrop="static"
       style="display: none"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content border-0">
           <div class="modal-header border-0 bg-light">
             <h5 class="modal-title">Modal title</h5>
@@ -143,32 +164,26 @@
               <i class="bi bi-x fs-5 lh-1"></i>
             </button>
           </div>
-          {{ currentConversion }}
-          <!-- <ul class="list-group">
-            <li class="list-group-item py-3" v-for="conversion in allConversions" :key="conversion.id">
-              <div class="d-flex align-items-start">
-                <div class="flex-grow-1">
-                  <div class="d-sm-flex align-items-center">
-                    <div class="mb-3 mb-sm-0 flex-grow-1">
-                      <p class="text-dark fs-6">{{ conversion.campaign.name }}</p>
-                      <p class="mb-0 small">{{ conversion.campaign.company }}</p>
-                    </div>
-                    <div class="">
-                      <div class="d-flex align-items-center">
-                        <div class="btn btn-sm btn-outline-light border text-secondary shadow-sm">
-                          <i class="me-1 bi bi-check fs-6 lh-1"></i>
-                          See stats
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul> -->
+          <h4 class="mb-4 display-5">{{ currentConversion.campaign.company + ` thanks you!` }}</h4>
+          <div class="d-flex flex-column align-items-begin">
+            <h6 class="my-3 mb-4">Refer your friends!</h6>
+            <p class="mb-0">Copy and paste this link and send to your friends:</p>
+            <router-link
+              :to="{
+                name: 'conversions-new',
+                params: { campaignId: currentConversion.campaign.id },
+                query: { referredBy: currentConversion.id },
+              }"
+            >
+              localhost:8080/{{ currentConversion.campaign.id }}/new?referredBy={{ currentConversion.id }}
+            </router-link>
+            <br />
+            <h6 class="mb-0">Total referrals so far:</h6>
+            <p>{{ currentConversion.total_referrals }}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </main>
 </template>
 <script>
@@ -177,7 +192,6 @@ import Vue2Filters from "vue2-filters";
 export default {
   data: function () {
     return {
-      currentConversion: {},
       conversionId: null,
       lookupPhoneParams: null,
       allConversions: [],
