@@ -146,44 +146,6 @@
         </div>
       </div>
     </div>
-    <!-- modal for a specific converison commented out- going to try to just link to success page -->
-    <!-- <div
-      class="modal fade"
-      id="modalSingleConversion"
-      tabindex="-1"
-      aria-labelledby="modalBasicLabel"
-      data-bs-backdrop="static"
-      style="display: none"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content border-0">
-          <div class="modal-header border-0 bg-light">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-              <i class="bi bi-x fs-5 lh-1"></i>
-            </button>
-          </div>
-          <h4 class="mb-4 display-5">{{ currentConversion.campaign.company + ` thanks you!` }}</h4>
-          <div class="d-flex flex-column align-items-begin">
-            <h6 class="my-3 mb-4">Refer your friends!</h6>
-            <p class="mb-0">Copy and paste this link and send to your friends:</p>
-            <router-link
-              :to="{
-                name: 'conversions-new',
-                params: { campaignId: currentConversion.campaign.id },
-                query: { referredBy: currentConversion.id },
-              }"
-            >
-              localhost:8080/{{ currentConversion.campaign.id }}/new?referredBy={{ currentConversion.id }}
-            </router-link>
-            <br />
-            <h6 class="mb-0">Total referrals so far:</h6>
-            <p>{{ currentConversion.total_referrals }}</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </main>
 </template>
 <script>
