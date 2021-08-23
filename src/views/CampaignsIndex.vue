@@ -1,7 +1,7 @@
 /* this page's path is "/campaigns" */
 <template>
   <main class="campaigns-index">
-    <section class="bg-gradient-primary text-white position-relative">
+    <!-- <section class="bg-gradient-primary text-white position-relative">
       <div class="container pt-11 pt-lg-15 pb-8 position-relative z-index-1">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-lg-10 col-xl-7 z-index-2">
@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="position-relative">
       <div class="container py-7 py-lg-12">
