@@ -86,9 +86,7 @@
               <li class="nav-item me-lg-3">
                 <a href="/" class="nav-link">Home</a>
               </li>
-              <li class="nav-item me-lg-3">
-                <a href="/about" class="nav-link">About us</a>
-              </li>
+
               <li v-if="isLoggedIn()" class="nav-item dropdown">
                 <a class="nav-link" href="/campaigns">
                   Campaigns
