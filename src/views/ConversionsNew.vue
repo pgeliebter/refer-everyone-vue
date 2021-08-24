@@ -30,11 +30,7 @@
         </svg>
 
         <!--Image-->
-        <img
-          src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z2l0aHVifGVufDB8fDB8fA%3D%3D"
-          alt=""
-          class="bg-image"
-        />
+        <img :src="`${campaign.image}`" alt="" class="bg-image" />
       </div>
       <div class="container z-index-1">
         <div class="row align-items-center">
