@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <header class="z-index-fixed header-transparent header-absolute-top">
+    <header
+      v-if="`${$route.path}` != `/${$route.params.campaignId}/new`"
+      class="z-index-fixed header-transparent header-absolute-top bg-light"
+    >
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container position-relative">
           <div class="d-flex align-items-center navbar-no-collapse-items order-lg-last">
@@ -464,6 +467,7 @@ export default {
           console.log(response.data);
           document.getElementById(`goToLogin`).click();
           this.errors = [];
+          this.newSessionParams.email = this.newUserParams.email;
         })
         .catch((error) => {
           this.errors = error.response.data.errors;

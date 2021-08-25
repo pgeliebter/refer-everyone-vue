@@ -98,7 +98,7 @@ export default {
   data: function () {
     return {
       newConversionParams: { campaign_id: this.$route.params.campaignId, referred_by: this.$route.query.referredBy },
-      match: false,
+      match: true,
       campaign: {},
     };
   },
@@ -123,6 +123,7 @@ export default {
         })
         .catch((errors) => {
           console.log(errors.response.status);
+          this.match = false;
         });
     },
 
