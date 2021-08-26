@@ -27,12 +27,13 @@
               <br />
               <span
                 class="d-inline-block typed-cursor"
-                data-typed='{"strings": ["Friends", "Enemies" , "Creepy Neighbor", "LinkedIn Peeps"]}'
+                data-typed='{"strings": ["Friends", "Enemies" ,"Frenemies", "Creepy Neighbor", "Padawan","Boss","This one doesn`t fit in the screen and goes on an on and on again, dreamlights" ]}'
               ></span>
               <span class="typed-cursor"></span>
             </h1>
 
             <a
+              v-if="!isLoggedIn()"
               href="#modalSignUpForm"
               data-bs-toggle="modal"
               aria-expanded="false"
@@ -40,6 +41,9 @@
             >
               <span>Get started</span>
             </a>
+            <router-link v-if="isLoggedIn()" :to="`/campaigns`" class="btn btn-primary rounded-pill btn-hover-arrow">
+              <span>My Campaigns</span>
+            </router-link>
           </div>
           <div class="col-md-6 col-sm-8">
             <img src="assets/img/graphics/illustration/03.svg" alt="" class="img-fluid" />
@@ -62,6 +66,11 @@ export default {
     };
   },
   created: function () {},
-  methods: {},
+  methods: {
+    isLoggedIn: function () {
+      if (localStorage.getItem("jwt")) return true;
+      else return false;
+    },
+  },
 };
 </script>

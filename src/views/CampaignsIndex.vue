@@ -56,11 +56,11 @@
                     <td>{{ campaign.total_conversions }}</td>
                     <td>{{ campaign.created_at }}</td>
                     <td>
-                      <router-link :to="`campaigns/${campaign.id}`">
+                      <a :href="`campaigns/${campaign.id}`">
                         <button class="btn btn-info btn-hover-arrow btn-sm mb-1">
                           <span>View</span>
                         </button>
-                      </router-link>
+                      </a>
                     </td>
                   </tr>
                 </tbody>
@@ -133,10 +133,16 @@ export default {
         .then((response) => {
           this.campaigns = response.data;
           console.log(this.campaigns);
+          this.blank(response.data);
         })
         .catch((error) => {
           console.log(error.response);
         });
+    },
+    blank: function (campaigns) {
+      if (campaigns.length == 0) {
+        this.$router.push("/campaigns/new");
+      }
     },
   },
 };

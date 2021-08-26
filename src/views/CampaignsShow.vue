@@ -23,11 +23,11 @@
                 </span>
                 <h2 class="h1 mb-2">
                   <span
+                    :data-to="`${campaign.total_conversions}`"
                     :data-countup="`{&quot;startVal&quot;:0}`"
                     :data-aos="``"
                     :data-aos-id="`countup:in`"
                     :class="`aos-init aos-animate`"
-                    :data-to="`${campaign.total_conversions}`"
                   ></span>
                 </h2>
                 <p class="mb-3">Total Conversions</p>
@@ -118,15 +118,9 @@
           <div class="col-12">
             <div class="d-flex mb-4 align-items-center">
               <h6 class="mb-0 me-3">
-                <router-link
-                  class="link-warning"
-                  :to="{
-                    name: 'conversions-new',
-                    params: { campaignId: campaign.id },
-                  }"
-                >
+                <a class="link-warning" :href="`/${campaign.id}/new`" target="_blank">
                   localhost:8080/{{ campaign.id }}/new
-                </router-link>
+                </a>
               </h6>
               <div class="pt-1 border-bottom flex-grow-1"></div>
             </div>
@@ -274,7 +268,7 @@
                             <h6 class="mb-0 me-3">Campaign Link</h6>
                           </div>
                         </div>
-                        <p class="mb-0">fix</p>
+                        <p class="mb-0">coming soon</p>
                       </div>
                     </li>
 
@@ -306,16 +300,11 @@
                 </div>
               </div>
             </div>
-            <div class="modal-footer bg-info border-0">
-              <button type="button" class="btn btn-white btn-sm" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary btn-sm">Save changes</button>
-            </div>
+            <div class="modal-footer bg-info height-75 border-0"></div>
           </div>
         </div>
       </div>
     </section>
-
-    <router-link to="/campaigns">Back to all campaigns</router-link>
   </div>
 </template>
 <script>
@@ -330,28 +319,33 @@ export default {
       currentConversion: {},
       conversionsFilter: "",
       totalIncentive: 0,
-      something: null,
+      dataDone: false,
     };
   },
   mixins: [Vue2Filters.mixin],
+
   mounted: function () {
     axios
       .get(`/campaigns/${this.$route.params.id}`)
       .then((response) => {
         console.log(response.data);
-        (this.campaign = response.data).then(
-          (this.totalIncentive = this.campaign.conversions
-            .map((e) => parseInt(e.total_incentive))
-            .reduce((a, b) => a + b))
-        );
+        (this.campaign = response.data)
+          .then(
+            (this.totalIncentive = this.campaign.conversions
+              .map((e) => parseInt(e.total_incentive))
+              .reduce((a, b) => a + b))
+          )
+          .catch((errors) => {
+            console.log(errors.response);
+          });
       })
       .catch((errors) => {
         console.log(errors.response);
       });
   },
+
   methods: {
     showConversionModal: function (conversion) {
-      console.log(conversion);
       this.currentConversion = conversion;
     },
   },

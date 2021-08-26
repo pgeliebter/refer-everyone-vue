@@ -10,7 +10,12 @@
             </div>
             <h4 class="mb-4 display-5">{{ conversion.campaign.company + ` thanks you!` }}</h4>
             <div class="d-flex flex-column align-items-begin">
-              <h6 class="my-3 mb-4">Refer your friends!</h6>
+              <h6 class="my-3 mb-4">Refer your friends and earn serious cash!</h6>
+              <p class="mb-0">
+                You will get
+                <strong>${{ parseFloat(conversion.campaign.incentive).toFixed(2) }}</strong>
+                per referral!
+              </p>
               <p class="mb-0">Copy and paste this link and send to your friends:</p>
               <router-link
                 :to="{
@@ -21,6 +26,7 @@
               >
                 localhost:8080/{{ conversion.campaign.id }}/new?referredBy={{ conversion.id }}
               </router-link>
+
               <br />
               <h6 class="mb-0">Total referrals so far:</h6>
               <p>{{ conversion.total_referrals }}</p>

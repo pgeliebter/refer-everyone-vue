@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <header
-      v-if="`${$route.path}` != `/${$route.params.campaignId}/new`"
+      v-if="
+        `${$route.path}` != `/success/${$route.params.id}` &&
+        `${$route.path}` != `/${$route.params.campaignId}/new` &&
+        `${$route.path}` != `/lookup`
+      "
       class="z-index-fixed header-transparent header-absolute-top bg-light"
     >
       <nav class="navbar navbar-expand-lg navbar-light">
