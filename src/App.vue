@@ -420,6 +420,10 @@
                     <p class="pt-4 mb-0 text-muted">
                       Don’t have an account yet?
                       <a
+                        @click="
+                          errors = [];
+                          newSessionParams = {};
+                        "
                         href="#modalSignUpForm"
                         data-bs-toggle="modal"
                         data-bs-dismiss="modal"
