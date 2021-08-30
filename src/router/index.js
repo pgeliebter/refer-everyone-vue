@@ -9,6 +9,7 @@ import ConversionsShow from "../views/ConversionsShow.vue";
 import ConversionsNew from "../views/ConversionsNew.vue";
 import ConversionComplete from "../views/ConversionComplete.vue";
 import Test from "../views/Test.vue";
+import Broken404 from "../views/404.vue";
 
 Vue.use(VueRouter);
 
@@ -58,6 +59,10 @@ const routes = [
     path: "/test",
     name: "something",
     component: Test,
+  },
+  {
+    path: "/*",
+    component: Broken404,
   },
 ];
 
