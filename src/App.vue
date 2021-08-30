@@ -95,10 +95,10 @@
               </li>
 
               <li v-if="isLoggedIn()" class="nav-item dropdown">
-                <a class="nav-link" href="/campaigns">
-                  Campaigns
-                  <!--Dropdown menu arrow svg icon-->
-                </a>
+                <a class="nav-link" href="/campaigns">Campaigns</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="/lookup">Lookup</a>
               </li>
             </ul>
           </div>
