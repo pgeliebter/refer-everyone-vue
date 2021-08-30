@@ -219,7 +219,7 @@
                               <tr>
                                 <td>
                                   <img
-                                    src="assets/img/avatar/2.jpg"
+                                    src="/assets/img/avatar/2.jpg"
                                     alt=""
                                     class="img-fluid rounded-circle avatar sm"
                                   />
@@ -233,7 +233,7 @@
                               <tr>
                                 <td>
                                   <img
-                                    src="assets/img/avatar/12.jpg"
+                                    src="/assets/img/avatar/12.jpg"
                                     alt=""
                                     class="img-fluid rounded-circle avatar sm"
                                   />
@@ -247,7 +247,7 @@
                               <tr>
                                 <td>
                                   <img
-                                    src="assets/img/avatar/9.jpg"
+                                    src="/assets/img/avatar/9.jpg"
                                     alt=""
                                     class="img-fluid rounded-circle avatar sm"
                                   />
@@ -261,7 +261,7 @@
                               <tr>
                                 <td>
                                   <img
-                                    src="assets/img/avatar/5.jpg"
+                                    src="/assets/img/avatar/5.jpg"
                                     alt=""
                                     class="img-fluid rounded-circle avatar sm"
                                   />

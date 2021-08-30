@@ -128,7 +128,7 @@
               <div class="col-md-10 col-lg-8 mx-auto text-center position-relative">
                 <div class="position-relative z-index-1">
                   <div class="text-danger mb-2">
-                    <img src="assets/img/graphics/illustration/404.svg" class="width-220 mx-auto" alt="" />
+                    <img src="/assets/img/graphics/illustration/404.svg" class="width-220 mx-auto" alt="" />
                   </div>
 
                   <h2 class="mb-4">Oops! No submissions found</h2>

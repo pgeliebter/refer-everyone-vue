@@ -46,7 +46,7 @@
             </router-link>
           </div>
           <div class="col-md-6 col-sm-8">
-            <img src="assets/img/graphics/illustration/03.svg" alt="" class="img-fluid" />
+            <img src="/assets/img/graphics/illustration/03.svg" alt="" class="img-fluid" />
           </div>
         </div>
         <!--/.row-->
