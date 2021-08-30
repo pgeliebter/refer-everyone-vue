@@ -72,8 +72,8 @@
       </div>
     </section>
 
-    <!-- list -->
-    <section class="position-relative">
+    <!-- list  commented out for now-->
+    <!-- <section class="position-relative">
       <div class="container py-7 py-lg-12">
         <div class="row justify-content-center">
           <div class="col-10">
@@ -111,7 +111,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </main>
 </template>
 <script>
