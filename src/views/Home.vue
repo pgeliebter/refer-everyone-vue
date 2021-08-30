@@ -27,7 +27,7 @@
               <br />
               <span
                 class="d-inline-block typed-cursor"
-                data-typed='{"strings": ["Friends", "Enemies" ,"Frenemies", "Creepy Neighbor", "Padawan","Boss","This one doesn`t fit in the screen and goes on an on and on again, dreamlights" ]}'
+                data-typed='{"strings": ["Friends", "Enemies" ,"Frenemies",  "Padawan","Boss","This one doesnt fit in the screen. It goes on and on, and on, and on. Strangers waitin" ]}'
               ></span>
               <span class="typed-cursor"></span>
             </h1>
