@@ -119,7 +119,7 @@
             <div class="d-flex mb-4 align-items-center">
               <h6 class="mb-0 me-3">
                 <a class="link-warning" :href="`/${campaign.id}/new`" target="_blank">
-                  localhost:8080/{{ campaign.id }}/new
+                  https://refer-everyone.netlify.app/{{ campaign.id }}/new
                 </a>
               </h6>
               <div class="pt-1 border-bottom flex-grow-1"></div>
