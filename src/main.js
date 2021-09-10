@@ -3,6 +3,11 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 import Vue2Filters from "vue2-filters";
+import VueGtag from "vue-gtag";
+
+Vue.use(VueGtag, {
+  config: { id: "G-ZGG1ETFP4Z" },
+});
 
 Vue.use(Vue2Filters);
 
