@@ -325,19 +325,24 @@ export default {
   mixins: [Vue2Filters.mixin],
 
   mounted: function () {
+    // this code below does the same thing as .then().catch()
+    // async function () {
+    //   try {
+    //     let response = await axios.get(`/campaigns/${this.$route.params.id}`);
+    //     console.log(response.data);
+    //     this.campaign = response.data;
+    //     this.totalIncentive = this.campaign.conversions.map((e) => parseInt(e.total_incentive)).reduce((a, b) => a + b);
+    //     this.dataDone = true;
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
     axios
       .get(`/campaigns/${this.$route.params.id}`)
       .then((response) => {
         console.log(response.data);
-        (this.campaign = response.data)
-          .then(
-            (this.totalIncentive = this.campaign.conversions
-              .map((e) => parseInt(e.total_incentive))
-              .reduce((a, b) => a + b))
-          )
-          .catch((errors) => {
-            console.log(errors.response);
-          });
+        this.campaign = response.data;
+        this.totalIncentive = this.campaign.conversions.map((e) => parseInt(e.total_incentive)).reduce((a, b) => a + b);
+        this.dataDone = true;
       })
       .catch((errors) => {
         console.log(errors.response);
