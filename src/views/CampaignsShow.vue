@@ -116,6 +116,7 @@
       <div class="container py-1 py-lg-1">
         <div class="row justify-content-center">
           <div class="col-12">
+            <h5 class="mb-0 me-3 py-2 te">Share this link to your landing page!</h5>
             <div class="d-flex mb-4 align-items-center">
               <h6 class="mb-0 me-3">
                 <a class="link-warning" :href="`/${campaign.id}/new`" target="_blank">

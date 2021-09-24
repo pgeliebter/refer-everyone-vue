@@ -24,7 +24,6 @@
                 <i></i>
               </span>
             </button>
-     
 
             <!-- the below is for popup Login modal -->
             <div v-if="!isLoggedIn()" class="nav-item me-3 me-lg-0 dropdown">
@@ -90,7 +89,6 @@
           </div>
           <!-- the below is the home about and campaings in navbar -->
           <div class="collapse navbar-collapse" id="navbar-demo-2">
-            
             <ul class="navbar-nav me-auto">
               <li class="nav-item me-lg-3">
                 <a href="/" class="nav-link">Home</a>
