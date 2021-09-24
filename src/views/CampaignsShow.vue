@@ -2,7 +2,7 @@
 <template>
   <div class="campaigns-show">
     <section class="position-relative border-top">
-      <div class="container py-7 py-lg-12">
+      <div class="container pt-7 pt-lg-12 pb-2 pb-lg-4">
         <div class="row justify-content-center">
           <div class="col-12">
             <h4 class="mb-0 me-3 py-2">{{ campaign.name }}</h4>
