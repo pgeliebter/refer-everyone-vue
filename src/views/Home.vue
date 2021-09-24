@@ -31,8 +31,14 @@
               ></span>
               <span class="typed-cursor"></span>
             </h1>
-
-            <a
+            <!-- the below is for test login -->
+            <div v-if="!isLoggedIn()" class="nav-item me-3 me-lg-0">
+              <button v-on:click="loginTestAccount()" class="btn btn-primary rounded-pill btn-hover-arrow">
+                Login with test account
+              </button>
+            </div>
+            <!-- the below is old button -->
+            <!-- <a
               v-if="!isLoggedIn()"
               href="#modalSignUpForm"
               data-bs-toggle="modal"
@@ -40,7 +46,7 @@
               class="btn btn-primary rounded-pill btn-hover-arrow"
             >
               <span>Get started</span>
-            </a>
+            </a> -->
             <router-link v-if="isLoggedIn()" :to="`/campaigns`" class="btn btn-primary rounded-pill btn-hover-arrow">
               <span>My Campaigns</span>
             </router-link>
@@ -59,10 +65,12 @@
 <style></style>
 
 <script>
+import axios from "axios";
 export default {
   data: function () {
     return {
       message: "Welcome to Vue.js! My dude",
+      newSessionParams: {},
     };
   },
   created: function () {},
@@ -70,6 +78,33 @@ export default {
     isLoggedIn: function () {
       if (localStorage.getItem("jwt")) return true;
       else return false;
+    },
+    submitLogin: function () {
+      axios
+        .post("/sessions", this.newSessionParams)
+        .then((response) => {
+          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+          localStorage.setItem("jwt", response.data.jwt);
+          localStorage.setItem("email", response.data.email);
+          localStorage.setItem("first_name", response.data.first_name);
+          localStorage.setItem("last_name", response.data.last_name);
+          this.closeModal("closeLogin");
+          this.errors = [];
+          this.$router.push("/campaigns");
+        })
+        .catch((error) => {
+          console.log(error.response);
+          this.errors = ["Invalid email or password."];
+          this.email = "";
+          this.password = "";
+        });
+    },
+    loginTestAccount: function () {
+      this.newSessionParams = {
+        email: "starwars@example.com",
+        password: "password",
+      };
+      this.submitLogin();
     },
   },
 };
