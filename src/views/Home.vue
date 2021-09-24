@@ -88,7 +88,6 @@ export default {
           localStorage.setItem("email", response.data.email);
           localStorage.setItem("first_name", response.data.first_name);
           localStorage.setItem("last_name", response.data.last_name);
-          this.closeModal("closeLogin");
           this.errors = [];
           this.$router.push("/campaigns");
         })
