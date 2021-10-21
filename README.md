@@ -1,5 +1,7 @@
 # refer-everyone-vue
 
+Backend - https://github.com/pgeliebter/refer-everyone-rails
+
 ## Project setup
 ```
 npm install
