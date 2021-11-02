@@ -44,7 +44,9 @@
 
           <div class="position-relative">
             <div class="mb-3">
-              <h2 class="mb-0 fs-1 row justify-content-center">Lookup your conversion</h2>
+              <h2 class="mb-0 fs-1 row justify-content-center">
+                Lookup your conversion
+              </h2>
             </div>
 
             <form>
@@ -90,18 +92,29 @@
         <div class="modal-content border-0">
           <div class="modal-header border-0 bg-light">
             <h5 class="modal-title">Submissions</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
               <i class="bi bi-x fs-5 lh-1"></i>
             </button>
           </div>
 
           <ul v-if="allConversions.length >= 1" class="list-group">
-            <li class="list-group-item py-3" v-for="conversion in allConversions" :key="conversion.id">
+            <li
+              class="list-group-item py-3"
+              v-for="conversion in allConversions"
+              :key="conversion.id"
+            >
               <div class="d-flex align-items-start">
                 <div class="flex-grow-1">
                   <div class="d-sm-flex align-items-center">
                     <div class="mb-3 mb-sm-0 flex-grow-1">
-                      <h6 class="text-dark fs-3">{{ conversion.campaign.name }}</h6>
+                      <h6 class="text-dark fs-3">
+                        {{ conversion.campaign.name }}
+                      </h6>
                       <h6>&nbsp;&nbsp;{{ conversion.campaign.company }}</h6>
                     </div>
                     <div class="">
@@ -111,7 +124,14 @@
                           aria-label="Close"
                           class="ms-2 pb-0 text-dark fw-semibold link-underline"
                         >
-                          <div class="btn btn-sm btn-outline-light border text-secondary shadow-sm">
+                          <div
+                            class="
+                              btn btn-sm btn-outline-light
+                              border
+                              text-secondary
+                              shadow-sm
+                            "
+                          >
                             <i class="me-1 bi bi-check fs-6 lh-1"></i>
                             See stats
                           </div>
@@ -125,10 +145,16 @@
           </ul>
           <div v-else class="container pt-12 pb-7">
             <div class="row">
-              <div class="col-md-10 col-lg-8 mx-auto text-center position-relative">
+              <div
+                class="col-md-10 col-lg-8 mx-auto text-center position-relative"
+              >
                 <div class="position-relative z-index-1">
                   <div class="text-danger mb-2">
-                    <img src="/assets/img/graphics/illustration/404.svg" class="width-220 mx-auto" alt="" />
+                    <img
+                      src="/assets/img/graphics/illustration/404.svg"
+                      class="width-220 mx-auto"
+                      alt=""
+                    />
                   </div>
 
                   <h2 class="mb-4">Oops! No submissions found</h2>
@@ -149,8 +175,8 @@
   </main>
 </template>
 <script>
-import axios from "axios";
-import Vue2Filters from "vue2-filters";
+import axios from 'axios'
+import Vue2Filters from 'vue2-filters'
 export default {
   data: function () {
     return {
@@ -158,7 +184,7 @@ export default {
       lookupPhoneParams: null,
       allConversions: [],
       errors: [],
-    };
+    }
   },
   mixins: [Vue2Filters.mixin],
   methods: {
@@ -166,13 +192,13 @@ export default {
       axios
         .get(`/conversions/lookup/${this.lookupPhoneParams}`)
         .then((response) => {
-          this.allConversions = response.data;
-          console.log(this.allConversions);
+          this.allConversions = response.data
+          console.log(this.allConversions)
         })
         .catch((error) => {
-          this.errors = error.response.data;
-        });
+          this.errors = error.response.data
+        })
     },
   },
-};
+}
 </script>
