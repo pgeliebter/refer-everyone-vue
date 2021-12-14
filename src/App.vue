@@ -10,7 +10,14 @@
     >
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container position-relative">
-          <div class="d-flex align-items-center navbar-no-collapse-items order-lg-last">
+          <div
+            class="
+              d-flex
+              align-items-center
+              navbar-no-collapse-items
+              order-lg-last
+            "
+          >
             <button
               class="navbar-toggler order-first"
               type="button"
@@ -38,7 +45,12 @@
             </div>
             <!-- the below is for popup SignUp modal -->
             <div v-if="!isLoggedIn()" class="nav-item me-3 me-lg-0">
-              <a href="#modalSignUpForm" data-bs-toggle="modal" aria-expanded="false" class="btn btn-primary py-1 px-3">
+              <a
+                href="#modalSignUpForm"
+                data-bs-toggle="modal"
+                aria-expanded="false"
+                class="btn btn-primary py-1 px-3"
+              >
                 Sign Up
               </a>
             </div>
@@ -53,12 +65,25 @@
               >
                 {{ localStorage.first_name }}
               </a>
-              <div class="dropdown-menu shadow-lg dropdown-menu-end dropdown-menu-xs p-0">
+              <div
+                class="
+                  dropdown-menu
+                  shadow-lg
+                  dropdown-menu-end dropdown-menu-xs
+                  p-0
+                "
+              >
                 <a href="#" class="dropdown-header border-bottom p-4">
                   <div class="d-flex align-items-center">
                     <div>
-                      <h5 class="mb-0">{{ `${localStorage.first_name} ${localStorage.last_name}` }}</h5>
-                      <span class="text-muted d-block mb-2">{{ localStorage.email }}</span>
+                      <h5 class="mb-0">
+                        {{
+                          `${localStorage.first_name} ${localStorage.last_name}`
+                        }}
+                      </h5>
+                      <span class="text-muted d-block mb-2">
+                        {{ localStorage.email }}
+                      </span>
                     </div>
                   </div>
                 </a>
@@ -106,6 +131,7 @@
       </nav>
     </header>
     <router-view />
+    <div @clicked="onClickChild"></div>
     <!-- signup modal below -->
     <div
       class="modal fade"
@@ -297,10 +323,21 @@
                     </div>
 
                     <div class="d-grid">
-                      <button class="btn btn-primary" type="submit">Sign Up</button>
+                      <button class="btn btn-primary" type="submit">
+                        Sign Up
+                      </button>
                     </div>
-                    <ul v-if="errors.length > 0" class="alert alert-danger mt-3 mb-0">
-                      <li v-for="error in errors" v-bind:key="error" class="ms-4 mb-0">{{ error }}</li>
+                    <ul
+                      v-if="errors.length > 0"
+                      class="alert alert-danger mt-3 mb-0"
+                    >
+                      <li
+                        v-for="error in errors"
+                        v-bind:key="error"
+                        class="ms-4 mb-0"
+                      >
+                        {{ error }}
+                      </li>
                     </ul>
                     <p class="pt-4 mb-0 text-muted">
                       Already have an account?
@@ -410,19 +447,31 @@
                     </div>
 
                     <div class="d-grid">
-                      <button class="btn btn-primary btn-hover-arrow" type="submit">
+                      <button
+                        class="btn btn-primary btn-hover-arrow"
+                        type="submit"
+                      >
                         <span>Login</span>
                       </button>
                     </div>
-                    <ul v-if="errors.length > 0" class="alert alert-danger mt-3 mb-0">
-                      <li v-for="error in errors" v-bind:key="error" class="mb-0">{{ error }}</li>
+                    <ul
+                      v-if="errors.length > 0"
+                      class="alert alert-danger mt-3 mb-0"
+                    >
+                      <li
+                        v-for="error in errors"
+                        v-bind:key="error"
+                        class="mb-0"
+                      >
+                        {{ error }}
+                      </li>
                     </ul>
                     <p class="pt-4 mb-0 text-muted">
                       Don’t have an account yet?
                       <a
                         @click="
-                          errors = [];
-                          newSessionParams = {};
+                          errors = []
+                          newSessionParams = {}
                         "
                         href="#modalSignUpForm"
                         data-bs-toggle="modal"
@@ -443,75 +492,80 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios'
 export default {
   data: function () {
     return {
       localStorage: localStorage,
-      newSessionParams: {},
+      newSessionParams: { email: 'starwars@example.com', password: 'password' },
       newUserParams: {},
       errors: [],
-    };
+    }
   },
   methods: {
     isLoggedIn: function () {
-      if (localStorage.getItem("jwt")) return true;
-      else return false;
+      if (localStorage.getItem('jwt')) return true
+      else return false
     },
     getUserId: function () {
-      if (localStorage.getItem("user_id")) return localStorage.getItem("user_id");
-      else return "no user_id";
+      if (localStorage.getItem('user_id'))
+        return localStorage.getItem('user_id')
+      else return 'no user_id'
     },
     submitLogin: function () {
       axios
-        .post("/sessions", this.newSessionParams)
+        .post('/sessions', this.newSessionParams)
         .then((response) => {
-          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
-          localStorage.setItem("jwt", response.data.jwt);
-          localStorage.setItem("email", response.data.email);
-          localStorage.setItem("first_name", response.data.first_name);
-          localStorage.setItem("last_name", response.data.last_name);
-          this.closeModal("closeLogin");
-          this.errors = [];
-          this.$router.push("/campaigns");
+          axios.defaults.headers.common['Authorization'] =
+            'Bearer ' + response.data.jwt
+          localStorage.setItem('jwt', response.data.jwt)
+          localStorage.setItem('email', response.data.email)
+          localStorage.setItem('first_name', response.data.first_name)
+          localStorage.setItem('last_name', response.data.last_name)
+          this.closeModal('closeLogin')
+          this.errors = []
+          this.$router.push('/campaigns')
         })
         .catch((error) => {
-          console.log(error.response);
-          this.errors = ["Invalid email or password."];
-          this.email = "";
-          this.password = "";
-        });
+          console.log(error.response)
+          this.errors = ['Invalid email or password.']
+          this.email = ''
+          this.password = ''
+        })
     },
     submitSignUp: function () {
       axios
-        .post("/users", this.newUserParams)
+        .post('/users', this.newUserParams)
         .then((response) => {
-          console.log(response.data);
-          document.getElementById(`goToLogin`).click();
-          this.errors = [];
-          this.newSessionParams.email = this.newUserParams.email;
+          console.log(response.data)
+          document.getElementById(`goToLogin`).click()
+          this.errors = []
+          this.newSessionParams.email = this.newUserParams.email
         })
         .catch((error) => {
-          this.errors = error.response.data.errors;
-        });
+          this.errors = error.response.data.errors
+        })
     },
     closeModal(id) {
-      document.getElementById(`${id}`).click();
+      document.getElementById(`${id}`).click()
     },
     loginTestAccount: function () {
       this.newSessionParams = {
-        email: "starwars@example.com",
-        password: "password",
-      };
-      this.submitLogin();
+        email: 'starwars@example.com',
+        password: 'password',
+      }
+      this.submitLogin()
+    },
+    onClickChild(value) {
+      console.log(value) // someValue
     },
   },
-};
+}
 </script>
 
 <style>
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
